@@ -42,3 +42,8 @@ The gem is available as open source under the terms of the [MIT License](https:/
 ## Code of Conduct
 
 Everyone interacting in the StatisticCalcs project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/mberrueta/statistic_calcs/blob/master/CODE_OF_CONDUCT.md).
+
+# https://github.com/thirtysixthspan/descriptive_statistics/blob/master/lib/descriptive_statistics/median.rb
+# https://github.com/bkoski/array_stats/blob/master/lib/array_stats/array_stats.rb
+# https://github.com/vaibhav-y/statistical
+# usa ffi https://github.com/no0p/ruby-gsl-ng/blob/f10bfe9a7c6473265d4c494d114ecdae4b009a31/lib/gslng/backend_components/stats.rb

@@ -1,6 +1,15 @@
-source "https://rubygems.org"
+# frozen_string_literal: true
 
-git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
+source 'https://rubygems.org'
 
-# Specify your gem's dependencies in statistic_calcs.gemspec
+gem 'gsl' # https://github.com/SciRuby/rb-gsl
+# gem 'gsl', git: 'git@github.com:mberrueta/rb-gsl.git', branch: 'added_inverse_distributions', ref: '0958480'
+gem 'rspec'
+
+gem 'pry'
+gem 'pry-byebug'
+gem 'pry-doc'
+gem 'pry-inline'
+gem 'pry-rescue'
+gem 'pry-stack_explorer'
 gemspec
