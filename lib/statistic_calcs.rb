@@ -1,5 +1,7 @@
-require "statistic_calcs/version"
+# frozen_string_literal: true
+
+require 'statistic_calcs/version'
 
 module StatisticCalcs
-  # Your code goes here...
+  DECIMALS = 5
 end
