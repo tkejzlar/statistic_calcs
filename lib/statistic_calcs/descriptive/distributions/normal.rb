@@ -22,8 +22,12 @@ module StatisticCalcs
           gsl_cdf.ugaussian_P(x - mean, standard_deviation)
         end
 
-        def gsl_g
-          1 - gsl_f
+        def gsl_f_inv
+          gsl_cdf.ugaussian_Pinv(f_x, standard_deviation) + mean
+        end
+
+        def gsl_g_inv
+          gsl_cdf.ugaussian_Qinv(g_x, standard_deviation) + mean
         end
 
         def validate!

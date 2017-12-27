@@ -27,8 +27,12 @@ module StatisticCalcs
           gsl_cdf.beta_P(x, alpha, beta)
         end
 
-        def gsl_g
-          1 - gsl_f
+        def gsl_f_inv
+          gsl_cdf.beta_Pinv(f_x, alpha, beta)
+        end
+
+        def gsl_g_inv
+          gsl_cdf.beta_Qinv(g_x, alpha, beta)
         end
 
         def validate!

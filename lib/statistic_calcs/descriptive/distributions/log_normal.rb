@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'statistic_calcs/descriptive/distributions/continuous.rb'
+require 'statistic_calcs/helpers/math.rb'
 
 module StatisticCalcs
   module Descriptive
@@ -12,8 +13,8 @@ module StatisticCalcs
         def calc!
           self.zeta = zeta.to_f
           self.sigma = sigma.to_f
-          self.mean = GSL::M_E**(zeta + (sigma**2 / 2))
-          self.variance = (GSL::M_E**(sigma**2) - 1) * GSL::M_E**(2 * zeta + (sigma**2))
+          self.mean = Helpers::Math.e**(zeta + (sigma**2 / 2))
+          self.variance = (Helpers::Math.e**(sigma**2) - 1) * Helpers::Math.e**(2 * zeta + (sigma**2))
           super
         end
 
@@ -23,8 +24,12 @@ module StatisticCalcs
           gsl_cdf.lognormal_P(x, zeta, sigma)
         end
 
-        def gsl_g
-          1 - gsl_f
+        def gsl_f_inv
+          gsl_cdf.lognormal_Pinv(f_x, zeta, sigma)
+        end
+
+        def gsl_g_inv
+          gsl_cdf.lognormal_Qinv(g_x, zeta, sigma)
         end
 
         def validate!

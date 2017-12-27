@@ -31,8 +31,12 @@ module StatisticCalcs
           gsl_cdf.tdist_P(x, nu)
         end
 
-        def gsl_g
-          1 - gsl_f
+        def gsl_f_inv
+          gsl_cdf.tdist_Pinv(f_x, nu)
+        end
+
+        def gsl_g_inv
+          gsl_cdf.tdist_Qinv(g_x, nu)
         end
 
         def validate!

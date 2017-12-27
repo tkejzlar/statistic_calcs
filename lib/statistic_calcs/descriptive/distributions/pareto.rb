@@ -27,8 +27,12 @@ module StatisticCalcs
           gsl_cdf.pareto_P(x, alpha, m)
         end
 
-        def gsl_g
-          1 - gsl_f
+        def gsl_f_inv
+          gsl_cdf.pareto_Pinv(f_x, alpha, m)
+        end
+
+        def gsl_g_inv
+          gsl_cdf.pareto_Qinv(g_x, alpha, m)
         end
 
         def validate!

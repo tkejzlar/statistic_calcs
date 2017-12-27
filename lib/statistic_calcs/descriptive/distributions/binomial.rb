@@ -28,10 +28,11 @@ module StatisticCalcs
         private
 
         def calculate_p!
-          raise 'Not implemented!'
-          # Double fisherX = new FisherSnedecorDistributionCalc().numeratorDegreesOfFreedom((double) 2 * r + 2)
-          # denominatorDegreesOfFreedom((double) 2 * n - 2 * r).f(1 - f).calculatePx().x();
-          # p = 1 / (1 + (((double) (n - r) / ((r + 1) * fisherX))));
+          d1 =  2 * r + 2
+          d2 = 2 * n - 2 * r
+          f_fs = g_x || 1 - f_x
+          fisher_x = FisherSnedecor.new(d1: d1, d2: d2, f_x: f_fs).x
+          self.p = 1.0 / (1 + (((n - r) / ((r + 1) * fisher_x))))
         end
 
         def calculate_r!

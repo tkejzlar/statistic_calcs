@@ -26,8 +26,12 @@ module StatisticCalcs
           gsl_cdf.fdist_P(x, nu1, nu2)
         end
 
-        def gsl_g
-          1 - gsl_f
+        def gsl_f_inv
+          gsl_cdf.fdist_Pinv(f_x, nu1, nu2)
+        end
+
+        def gsl_g_inv
+          gsl_cdf.fdist_Qinv(g_x, nu1, nu2)
         end
 
         def validate!

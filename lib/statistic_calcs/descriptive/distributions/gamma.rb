@@ -26,8 +26,12 @@ module StatisticCalcs
           gsl_cdf.gamma_P(x, a, 1.0 / b)
         end
 
-        def gsl_g
-          1 - gsl_f
+        def gsl_f_inv
+          gsl_cdf.gamma_Pinv(f_x, a, 1.0 / b)
+        end
+
+        def gsl_g_inv
+          gsl_cdf.gamma_Qinv(g_x, a, 1.0 / b)
         end
 
         def validate!

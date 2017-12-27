@@ -24,8 +24,12 @@ module StatisticCalcs
           gsl_cdf.chisq_P(x, v)
         end
 
-        def gsl_g
-          1 - gsl_f
+        def gsl_f_inv
+          gsl_cdf.chisq_Pinv(f_x, v)
+        end
+
+        def gsl_g_inv
+          gsl_cdf.chisq_Qinv(g_x, v)
         end
 
         def validate!

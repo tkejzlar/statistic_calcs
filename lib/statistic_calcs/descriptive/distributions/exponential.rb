@@ -22,8 +22,12 @@ module StatisticCalcs
           gsl_cdf.exponential_P(x, mean)
         end
 
-        def gsl_g
-          1 - gsl_f
+        def gsl_f_inv
+          gsl_cdf.exponential_Pinv(f_x, mean)
+        end
+
+        def gsl_g_inv
+          gsl_cdf.exponential_Qinv(g_x, mean)
         end
 
         def validate!

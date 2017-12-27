@@ -7,8 +7,10 @@ module StatisticCalcs
     module Distributions
       class Continuous < Base
         def calc!
-          self.f_x = gsl_f
-          self.g_x = 1 - f_x
+          self.x ||= gsl_f_inv if f_x
+          self.x ||= gsl_g_inv if g_x
+          self.f_x ||= gsl_f if x
+          self.g_x ||= 1 - f_x if x
           super
         end
 
@@ -18,6 +20,12 @@ module StatisticCalcs
 
         def discrete?
           false
+        end
+
+        private
+
+        def gsl_g
+          1 - gsl_f
         end
       end
     end

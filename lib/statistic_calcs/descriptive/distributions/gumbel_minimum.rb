@@ -19,18 +19,6 @@ module StatisticCalcs
 
         private
 
-        def gsl_p
-          gsl_ran.XXXXXXX_pdf
-        end
-
-        def gsl_f
-          gsl_cdf.XXXXXXX_P
-        end
-
-        def gsl_g
-          gsl_cdf.XXXXXXX_Q
-        end
-
         def validate!
           raise 'f_x should be between 0 and 1' if f_x.negative? || f_x > 1
         end
