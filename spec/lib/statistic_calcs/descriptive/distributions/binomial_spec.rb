@@ -108,4 +108,20 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::Binomial do
       expect(subject.standard_deviation).to eq(1.34164)
     end
   end
+
+  describe 'calc to get r with g with 0' do
+    let(:options) { { n: 20, r: 19, f_x: 0.87842 } }
+
+    it 'should fill all the attributes' do
+      expect(subject.p_x).to eq(0.27018)
+      expect(subject.f_x).to eq(0.87842)
+      expect(subject.g_x).to eq(0.39176)
+      expect(subject.r).to eq(19)
+      expect(subject.n).to eq(20)
+      expect(subject.p).to eq(0.9)
+      expect(subject.mean.round(2)).to eq(18.0)
+      expect(subject.variance.round(2)).to eq(1.8)
+      expect(subject.standard_deviation).to eq(1.34163)
+    end
+  end
 end

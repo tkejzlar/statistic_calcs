@@ -2,6 +2,7 @@
 
 require 'statistic_calcs/helpers/alias_attributes.rb'
 require 'gsl'
+require 'pry'
 
 module StatisticCalcs
   module Descriptive
@@ -28,7 +29,7 @@ module StatisticCalcs
         def calc!
           self.coefficient_variation = variance || 0 / mean if mean&.positive?
           self.variance ||= standard_deviation**2 if standard_deviation
-          self.standard_deviation ||= Math.sqrt(variance) if variance
+          self.standard_deviation ||= Math.sqrt(variance) if variance&.positive?
           round_all!
           self
         end

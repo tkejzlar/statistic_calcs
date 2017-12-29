@@ -80,4 +80,15 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::FisherSnedecor do
       expect(subject.standard_deviation).to eq(0.90726)
     end
   end
+
+  describe 'calc to get f, p & g' do
+    let(:options) { { d1: 40, d2: 2, f_x: 0.12158 } }
+    it 'should fill all the attributes' do
+      expect(subject.x).to eq(0.45001)
+      expect(subject.f_x).to eq(0.12158)
+      expect(subject.g_x).to eq(0.87842)
+      expect(subject.mean).to eq(Float::INFINITY)
+      expect(subject.variance).to eq(-Float::INFINITY)
+    end
+  end
 end

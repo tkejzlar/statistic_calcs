@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 require 'statistic_calcs/descriptive/distributions/discrete.rb'
-
+require 'statistic_calcs/descriptive/distributions/fisher_snedecor.rb'
+require 'pry'
 module StatisticCalcs
   module Descriptive
     module Distributions
@@ -31,8 +32,8 @@ module StatisticCalcs
           d1 = 2 * r + 2
           d2 = 2 * n - 2 * r
           f_fs = g_x || 1 - f_x
-          fisher_x = FisherSnedecor.new(d1: d1, d2: d2, f_x: f_fs).x
-          self.p = 1.0 / (1 + (((n - r) / ((r + 1) * fisher_x))))
+          fisher = FisherSnedecor.new(d1: d1, d2: d2, f_x: f_fs).calc!
+          self.p = 1.0 / (1 + (((n - r) / ((r + 1) * fisher.x))))
         end
 
         def calculate_r!
