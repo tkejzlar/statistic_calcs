@@ -28,7 +28,7 @@ module StatisticCalcs
         private
 
         def calculate_p!
-          d1 =  2 * r + 2
+          d1 = 2 * r + 2
           d2 = 2 * n - 2 * r
           f_fs = g_x || 1 - f_x
           fisher_x = FisherSnedecor.new(d1: d1, d2: d2, f_x: f_fs).x

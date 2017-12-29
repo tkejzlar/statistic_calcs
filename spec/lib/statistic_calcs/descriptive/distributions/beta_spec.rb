@@ -4,6 +4,7 @@
 require 'statistic_calcs/descriptive/distributions/beta.rb'
 require 'spec_helper'
 
+# rubocop:disable BlockLength
 RSpec.describe StatisticCalcs::Descriptive::Distributions::Beta do
   subject { StatisticCalcs::Descriptive::Distributions::Beta.new(options) }
 

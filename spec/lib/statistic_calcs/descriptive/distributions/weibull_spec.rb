@@ -4,6 +4,7 @@
 require 'statistic_calcs/descriptive/distributions/weibull.rb'
 require 'spec_helper'
 
+# rubocop:disable BlockLength
 RSpec.describe StatisticCalcs::Descriptive::Distributions::Weibull do
   subject { StatisticCalcs::Descriptive::Distributions::Weibull.new(options) }
 
@@ -20,7 +21,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::Weibull do
       expect(subject.standard_deviation).to eq(1.4497)
     end
   end
-  
+
   describe 'calc to get f, p & g' do
     let(:options) { { alpha: 14, beta: 25, f_x: 0.41293 } }
     it 'should fill all the attributes' do

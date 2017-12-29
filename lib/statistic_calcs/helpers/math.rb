@@ -20,7 +20,7 @@ module StatisticCalcs
       def self.e
         GSL::M_E
       end
-        
+
       # better value with gamma
       # def factorial_aprox(value)
       #   Math.sqrt(GSL::M_PI) * (value / GSL::M_E)**value \

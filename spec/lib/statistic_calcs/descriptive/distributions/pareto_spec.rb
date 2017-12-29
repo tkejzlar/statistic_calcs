@@ -4,6 +4,7 @@
 require 'statistic_calcs/descriptive/distributions/pareto.rb'
 require 'spec_helper'
 
+# rubocop:disable BlockLength
 RSpec.describe StatisticCalcs::Descriptive::Distributions::Pareto do
   subject { StatisticCalcs::Descriptive::Distributions::Pareto.new(options) }
 

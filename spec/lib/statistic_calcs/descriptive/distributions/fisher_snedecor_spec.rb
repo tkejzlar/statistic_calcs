@@ -4,6 +4,7 @@
 require 'statistic_calcs/descriptive/distributions/fisher_snedecor.rb'
 require 'spec_helper'
 
+# rubocop:disable BlockLength
 RSpec.describe StatisticCalcs::Descriptive::Distributions::FisherSnedecor do
   subject { StatisticCalcs::Descriptive::Distributions::FisherSnedecor.new(options) }
 

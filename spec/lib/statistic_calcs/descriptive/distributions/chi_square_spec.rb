@@ -4,7 +4,8 @@
 require 'statistic_calcs/descriptive/distributions/chi_square.rb'
 require 'spec_helper'
 
-RSpec.describe StatisticCalcs::Descriptive::Distributions::ChiSquare do
+# rubocop:disable BlockLength
+Spec.describe StatisticCalcs::Descriptive::Distributions::ChiSquare do
   subject { StatisticCalcs::Descriptive::Distributions::ChiSquare.new(options) }
 
   before { subject.calc! }

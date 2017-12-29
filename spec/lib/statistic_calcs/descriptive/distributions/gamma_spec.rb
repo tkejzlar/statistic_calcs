@@ -4,6 +4,7 @@
 require 'statistic_calcs/descriptive/distributions/gamma.rb'
 require 'spec_helper'
 
+# rubocop:disable BlockLength
 RSpec.describe StatisticCalcs::Descriptive::Distributions::Gamma do
   subject { StatisticCalcs::Descriptive::Distributions::Gamma.new(options) }
 

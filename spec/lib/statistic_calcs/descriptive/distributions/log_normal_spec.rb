@@ -4,6 +4,7 @@
 require 'statistic_calcs/descriptive/distributions/log_normal.rb'
 require 'spec_helper'
 
+# rubocop:disable BlockLength
 RSpec.describe StatisticCalcs::Descriptive::Distributions::LogNormal do
   subject { StatisticCalcs::Descriptive::Distributions::LogNormal.new(options) }
 

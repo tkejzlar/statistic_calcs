@@ -4,6 +4,7 @@
 require 'statistic_calcs/descriptive/distributions/exponential.rb'
 require 'spec_helper'
 
+# rubocop:disable BlockLength
 RSpec.describe StatisticCalcs::Descriptive::Distributions::Exponential do
   subject { StatisticCalcs::Descriptive::Distributions::Exponential.new(options) }
 
@@ -47,8 +48,8 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::Exponential do
   describe 'calc to get f, p & g' do
     let(:options) { { lambda: 2, x: 0.1 } }
     it 'should fill all the attributes' do
-    expect(subject.x).to eq(0.1)
-    expect(subject.f_x).to eq(0.18127)
+      expect(subject.x).to eq(0.1)
+      expect(subject.f_x).to eq(0.18127)
       expect(subject.g_x).to eq(0.81873)
       expect(subject.mean).to eq(0.5)
       expect(subject.variance).to eq(0.25)
@@ -59,8 +60,8 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::Exponential do
   describe 'calc to get f, p & g' do
     let(:options) { { lambda: 2, f_x: 0.18127 } }
     it 'should fill all the attributes' do
-    expect(subject.x).to eq(0.1)
-    expect(subject.f_x).to eq(0.18127)
+      expect(subject.x).to eq(0.1)
+      expect(subject.f_x).to eq(0.18127)
       expect(subject.g_x).to eq(0.81873)
       expect(subject.mean).to eq(0.5)
       expect(subject.variance).to eq(0.25)
@@ -71,8 +72,8 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::Exponential do
   describe 'calc to get f, p & g' do
     let(:options) { { lambda: 2, g_x: 0.81873 } }
     it 'should fill all the attributes' do
-    expect(subject.x).to eq(0.1)
-    expect(subject.f_x).to eq(0.18127)
+      expect(subject.x).to eq(0.1)
+      expect(subject.f_x).to eq(0.18127)
       expect(subject.g_x).to eq(0.81873)
       expect(subject.mean).to eq(0.5)
       expect(subject.variance).to eq(0.25)
