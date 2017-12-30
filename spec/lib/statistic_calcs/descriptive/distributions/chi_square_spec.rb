@@ -9,7 +9,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::ChiSquare do
   subject { StatisticCalcs::Descriptive::Distributions::ChiSquare.new(options) }
 
   before { subject.calc! }
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { v: 49, x: 56 } }
 
     it 'should fill all the attributes' do
@@ -22,7 +22,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::ChiSquare do
     end
   end
 
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { v: 49, f_x: 0.77115 } }
 
     it 'should fill all the attributes' do
@@ -35,7 +35,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::ChiSquare do
     end
   end
 
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { v: 49, g_x: 0.22885 } }
 
     it 'should fill all the attributes' do
@@ -48,7 +48,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::ChiSquare do
     end
   end
 
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { v: 149, x: 156 } }
 
     it 'should fill all the attributes' do
@@ -61,7 +61,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::ChiSquare do
     end
   end
 
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { v: 149, f_x: 0.66923 } }
 
     it 'should fill all the attributes' do
@@ -74,7 +74,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::ChiSquare do
     end
   end
 
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { v: 149, g_x: 0.33077 } }
 
     it 'should fill all the attributes' do

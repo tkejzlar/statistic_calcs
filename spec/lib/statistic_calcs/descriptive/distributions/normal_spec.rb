@@ -9,7 +9,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::Normal do
   subject { StatisticCalcs::Descriptive::Distributions::Normal.new(options) }
 
   before { subject.calc! }
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { mean: 0, standard_deviation: 1, x: 1.64489 } }
     it 'should fill all the attributes' do
       expect(subject.x).to eq(1.64489)
@@ -22,7 +22,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::Normal do
   end
 
   before { subject.calc! }
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { mean: 0, standard_deviation: 1, f_x: 0.95 } }
     it 'should fill all the attributes' do
       expect(subject.x).to eq(1.64485)
@@ -35,7 +35,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::Normal do
   end
 
   before { subject.calc! }
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { mean: 0, standard_deviation: 1, g_x: 0.05 } }
     it 'should fill all the attributes' do
       expect(subject.x).to eq(1.64485)
@@ -47,7 +47,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::Normal do
     end
   end
 
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { mean: 0, standard_deviation: 1, x: 1.44 } }
     it 'should fill all the attributes' do
       expect(subject.x).to eq(1.44)
@@ -59,7 +59,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::Normal do
     end
   end
 
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { mean: 0, standard_deviation: 1, f_x: 0.92507 } }
     it 'should fill all the attributes' do
       expect(subject.x).to eq(1.44003)
@@ -71,7 +71,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::Normal do
     end
   end
 
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { mean: 0, standard_deviation: 1, g_x: 0.07493 } }
     it 'should fill all the attributes' do
       expect(subject.x).to eq(1.44003)
@@ -83,7 +83,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::Normal do
     end
   end
 
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { mean: 47.9, standard_deviation: 1.33, x: 46.779 } }
     it 'should fill all the attributes' do
       expect(subject.x).to eq(46.779)
@@ -95,7 +95,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::Normal do
     end
   end
 
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { mean: 47.9, standard_deviation: 1.33, f_x: 0.19965 } }
     it 'should fill all the attributes' do
       expect(subject.x).to eq(46.77898)
@@ -107,7 +107,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::Normal do
     end
   end
 
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { mean: 47.9, standard_deviation: 1.33, g_x: 0.80035 } }
     it 'should fill all the attributes' do
       expect(subject.x).to eq(46.77898)
@@ -119,7 +119,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::Normal do
     end
   end
 
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { mean: -6.4469, standard_deviation: 0.05, x: -6.556 } }
     it 'should fill all the attributes' do
       expect(subject.x).to eq(-6.556)
@@ -131,7 +131,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::Normal do
     end
   end
 
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { mean: -6.4469, standard_deviation: 0.05, f_x: 0.01455 } }
     it 'should fill all the attributes' do
       expect(subject.x).to eq(-6.55601)
@@ -143,7 +143,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::Normal do
     end
   end
 
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { mean: -6.4469, standard_deviation: 0.05, g_x: 0.98545 } }
     it 'should fill all the attributes' do
       expect(subject.x).to eq(-6.55601)

@@ -9,7 +9,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::Gamma do
   subject { StatisticCalcs::Descriptive::Distributions::Gamma.new(options) }
 
   before { subject.calc! }
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { a: 5, b: 33, x: 0.25 } }
     it 'should fill all the attributes' do
       expect(subject.x).to eq(0.25)
@@ -22,7 +22,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::Gamma do
   end
 
   before { subject.calc! }
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { a: 5, b: 33, f_x: 0.91381 } }
     it 'should fill all the attributes' do
       expect(subject.x).to eq(0.25)
@@ -35,7 +35,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::Gamma do
   end
 
   before { subject.calc! }
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { a: 5, b: 33, g_x: 0.08619 } }
     it 'should fill all the attributes' do
       expect(subject.x).to eq(0.25)
@@ -47,7 +47,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::Gamma do
     end
   end
 
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { a: 1, b: 2, x: 3 } }
     it 'should fill all the attributes' do
       expect(subject.x).to eq(3)
@@ -59,7 +59,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::Gamma do
     end
   end
 
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { a: 1, b: 2, f_x: 0.99752 } }
     it 'should fill all the attributes' do
       expect(subject.x.round).to eq(3)
@@ -71,7 +71,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::Gamma do
     end
   end
 
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { a: 1, b: 2, g_x: 0.00248 } }
     it 'should fill all the attributes' do
       expect(subject.x.round).to eq(3)

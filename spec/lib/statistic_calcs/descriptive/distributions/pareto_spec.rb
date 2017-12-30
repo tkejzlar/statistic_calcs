@@ -9,7 +9,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::Pareto do
   subject { StatisticCalcs::Descriptive::Distributions::Pareto.new(options) }
 
   before { subject.calc! }
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { m: 45, alpha: 3, x: 55 } }
     it 'should fill all the attributes' do
       expect(subject.x).to eq(55)
@@ -21,7 +21,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::Pareto do
     end
   end
 
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { m: 45, alpha: 3, f_x: 0.45229 } }
     it 'should fill all the attributes' do
       expect(subject.x.round).to eq(55)
@@ -33,7 +33,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::Pareto do
     end
   end
 
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { m: 45, alpha: 3, g_x: 0.54771 } }
     it 'should fill all the attributes' do
       expect(subject.x.round).to eq(55)
@@ -45,7 +45,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::Pareto do
     end
   end
 
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { m: 4223.98, alpha: 23.983, x: 5024.114 } }
     it 'should fill all the attributes' do
       expect(subject.x).to eq(5024.114)
@@ -57,7 +57,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::Pareto do
     end
   end
 
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { m: 4223.98, alpha: 23.983, f_x: 0.9844 } }
     it 'should fill all the attributes' do
       expect(subject.x).to eq(5024.13955)
@@ -69,7 +69,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::Pareto do
     end
   end
 
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { m: 4223.98, alpha: 23.983, g_x: 0.0156 } }
     it 'should fill all the attributes' do
       expect(subject.x).to eq(5024.13955)

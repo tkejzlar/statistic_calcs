@@ -6,19 +6,31 @@ require 'pry'
 module StatisticCalcs
   module Descriptive
     module Distributions
+      # Binomial distribution with parameters number_trials (n) and probability_of_success (p)
+      # is the discrete probability distribution of the number_successes (r) in a sequence 
+      # of number_trials independent experiments
+      # ref: https://en.wikipedia.org/wiki/Binomial_distribution
+      #
+      # This class allow to calculate
+      #   P (x < X) => f_x
+      #   P (x = X) => p_x
+      #   P (x > X) => g_x
+      #   the inverse fractil (number_successes)
+      #   number_trials (n) or probability_of_success (p)
+      #
       class Binomial < Discrete
         attr_accessor :probability_of_success, :number_trials, :number_successes
 
         attr_alias :p, :probability_of_success
         attr_alias :n, :number_trials
-        # r -> V.A.
         attr_alias :r, :number_successes
 
         def calc!
           calculate_p! unless p
+          calculate_n! unless n
           calculate_r! unless r
           self.mean = n * p
-          self.median = mean
+          self.median = mean.round
           self.variance = n * p * (1 - p)
           self.skewness = (1 - 2 * p) / variance
           self.kurtosis = 3 + ((1 - 6 * p * (1 - p)) / variance)
@@ -34,6 +46,11 @@ module StatisticCalcs
           f_fs = g_x || 1 - f_x
           fisher = FisherSnedecor.new(d1: d1, d2: d2, f_x: f_fs).calc!
           self.p = 1.0 / (1 + (((n - r) / ((r + 1) * fisher.x))))
+        end
+
+        def calculate_n!
+          self.variance ||= standard_deviation**2 if standard_deviation&.positive?
+          self.n = mean ? (mean / p).round : (variance / (p * (1 - p))).round
         end
 
         def calculate_r!

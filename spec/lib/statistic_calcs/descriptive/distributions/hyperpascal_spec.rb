@@ -8,7 +8,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::Hyperpascal do
   subject { StatisticCalcs::Descriptive::Distributions::Hyperpascal.new(options) }
 
   before { subject.calc! }
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { n: 25, population_size: 36, total_number_successes: 34, x: 24 } }
 
     it 'should fill all the attributes' do

@@ -9,7 +9,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::Geometric do
   subject { StatisticCalcs::Descriptive::Distributions::Geometric.new(options) }
 
   before { subject.calc! }
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { r: 2, p: 0.235 } }
 
     it 'should fill all the attributes' do
@@ -24,7 +24,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::Geometric do
     end
   end
 
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { r: 1, p: 0.7623 } }
 
     it 'should fill all the attributes' do
@@ -39,7 +39,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::Geometric do
     end
   end
 
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { r: 10, p: 0.25 } }
 
     it 'should fill all the attributes' do

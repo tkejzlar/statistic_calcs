@@ -8,7 +8,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::GumbelMaximum do
   subject { StatisticCalcs::Descriptive::Distributions::GumbelMaximum.new(options) }
 
   # TODO: Implement before { subject.calc! }
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { thita: 2, beta: 3, x: 1 } }
 
     it 'should fill all the attributes' do

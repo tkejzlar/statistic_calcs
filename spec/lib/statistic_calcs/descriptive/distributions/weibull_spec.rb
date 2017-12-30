@@ -9,7 +9,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::Weibull do
   subject { StatisticCalcs::Descriptive::Distributions::Weibull.new(options) }
 
   before { subject.calc! }
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { alpha: 14, beta: 25, x: 23.9 } }
     it 'should fill all the attributes' do
       expect(subject.x).to eq(23.9)
@@ -22,7 +22,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::Weibull do
     end
   end
 
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { alpha: 14, beta: 25, f_x: 0.41293 } }
     it 'should fill all the attributes' do
       expect(subject.x).to eq(23.9)
@@ -35,7 +35,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::Weibull do
     end
   end
 
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { alpha: 14, beta: 25, g_x: 0.58707 } }
     it 'should fill all the attributes' do
       expect(subject.x).to eq(23.9)

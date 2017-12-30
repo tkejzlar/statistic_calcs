@@ -9,7 +9,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::GumbelMinimum do
 
   # TODO: not implemented
   # before { subject.calc! }
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     # let(:options) { {  } }
 
     it 'should fill all the attributes' do

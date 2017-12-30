@@ -9,7 +9,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::LogNormal do
   subject { StatisticCalcs::Descriptive::Distributions::LogNormal.new(options) }
 
   before { subject.calc! }
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { zeta: 4, sigma: 3, x: 78 } }
     it 'should fill all the attributes' do
       expect(subject.x).to eq(78)
@@ -21,7 +21,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::LogNormal do
     end
   end
 
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { zeta: 4, sigma: 3, f_x: 0.54732 } }
     it 'should fill all the attributes' do
       expect(subject.x.round).to eq(78)
@@ -33,7 +33,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::LogNormal do
     end
   end
 
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { zeta: 4, sigma: 3, g_x: 0.45268 } }
     it 'should fill all the attributes' do
       expect(subject.x.round).to eq(78)
@@ -45,7 +45,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::LogNormal do
     end
   end
 
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { zeta: 0.554, sigma: 1, x: 3.2 } }
     it 'should fill all the attributes' do
       expect(subject.x).to eq(3.2)
@@ -57,7 +57,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::LogNormal do
     end
   end
 
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { zeta: 0.554, sigma: 1, f_x: 0.72879 } }
     it 'should fill all the attributes' do
       expect(subject.x.round(1)).to eq(3.2)
@@ -69,7 +69,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::LogNormal do
     end
   end
 
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { zeta: 0.554, sigma: 1, g_x: 0.27121 } }
     it 'should fill all the attributes' do
       expect(subject.x.round(1)).to eq(3.2)

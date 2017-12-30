@@ -9,7 +9,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::Beta do
   subject { StatisticCalcs::Descriptive::Distributions::Beta.new(options) }
 
   before { subject.calc! }
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { alpha: 55, beta: 40, x: 0.53 } }
 
     it 'should fill all the attributes' do
@@ -48,7 +48,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::Beta do
     end
   end
 
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { alpha: 2, beta: 40, x: 0.053 } }
 
     it 'should fill all the attributes' do

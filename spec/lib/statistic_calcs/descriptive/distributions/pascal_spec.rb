@@ -8,7 +8,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::Pascal do
   subject { StatisticCalcs::Descriptive::Distributions::Pascal.new(options) }
 
   before { subject.calc! }
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { n: 21, r: 20, p: 0.9 } }
 
     it 'should fill all the attributes' do

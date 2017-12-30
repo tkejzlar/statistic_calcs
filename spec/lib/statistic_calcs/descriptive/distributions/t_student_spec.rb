@@ -9,7 +9,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::TStudent do
   subject { StatisticCalcs::Descriptive::Distributions::TStudent.new(options) }
 
   before { subject.calc! }
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { degrees_of_freedom: 45, x: 1.33 } }
     it 'should fill all the attributes' do
       expect(subject.x).to eq(1.33)
@@ -21,7 +21,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::TStudent do
     end
   end
 
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { degrees_of_freedom: 45, f_x: 0.90489 } }
     it 'should fill all the attributes' do
       expect(subject.x).to eq(1.33)
@@ -33,7 +33,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::TStudent do
     end
   end
 
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { degrees_of_freedom: 45, g_x: 0.09511 } }
     it 'should fill all the attributes' do
       expect(subject.x).to eq(1.33)
@@ -45,7 +45,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::TStudent do
     end
   end
 
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { degrees_of_freedom: 1.99, x: 0.44 } }
     it 'should fill all the attributes' do
       expect(subject.x).to eq(0.44)
@@ -57,7 +57,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::TStudent do
     end
   end
 
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { degrees_of_freedom: 1.99, f_x: 0.64845 } }
     it 'should fill all the attributes' do
       expect(subject.x).to eq(0.44002)
@@ -69,7 +69,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::TStudent do
     end
   end
 
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { degrees_of_freedom: 1.99, g_x: 0.35155 } }
     it 'should fill all the attributes' do
       expect(subject.x).to eq(0.44002)

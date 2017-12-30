@@ -9,7 +9,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::Poisson do
   subject { StatisticCalcs::Descriptive::Distributions::Poisson.new(options) }
 
   before { subject.calc! }
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { frequency: 25, time_period: 1, number_successes: 30 } }
 
     it 'should fill all the attributes' do
@@ -22,7 +22,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::Poisson do
     end
   end
 
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { frequency: 325, time_period: 1, number_successes: 288 } }
 
     it 'should fill all the attributes' do
@@ -35,7 +35,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::Poisson do
     end
   end
 
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { frequency: 325, time_period: 0.1, number_successes: 28 } }
 
     it 'should fill all the attributes' do

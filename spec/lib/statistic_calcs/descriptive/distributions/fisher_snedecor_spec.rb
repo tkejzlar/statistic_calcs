@@ -9,7 +9,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::FisherSnedecor do
   subject { StatisticCalcs::Descriptive::Distributions::FisherSnedecor.new(options) }
 
   before { subject.calc! }
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { d1: 45, d2: 36, x: 1.23 } }
     it 'should fill all the attributes' do
       expect(subject.x).to eq(1.23)
@@ -21,7 +21,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::FisherSnedecor do
     end
   end
 
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { d1: 45, d2: 36, f_x: 0.73754 } }
     it 'should fill all the attributes' do
       expect(subject.x).to eq(1.22999)
@@ -33,7 +33,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::FisherSnedecor do
     end
   end
 
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { d1: 45, d2: 36, g_x: 0.26246 } }
     it 'should fill all the attributes' do
       expect(subject.x).to eq(1.22999)
@@ -45,7 +45,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::FisherSnedecor do
     end
   end
 
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { d1: 3, d2: 44, x: 1.569 } }
     it 'should fill all the attributes' do
       expect(subject.x).to eq(1.569)
@@ -57,7 +57,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::FisherSnedecor do
     end
   end
 
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { d1: 3, d2: 44, f_x: 0.78964 } }
     it 'should fill all the attributes' do
       expect(subject.x).to eq(1.56899)
@@ -69,7 +69,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::FisherSnedecor do
     end
   end
 
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { d1: 3, d2: 44, g_x: 0.21036 } }
     it 'should fill all the attributes' do
       expect(subject.x).to eq(1.56899)
@@ -81,7 +81,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::FisherSnedecor do
     end
   end
 
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { d1: 40, d2: 2, f_x: 0.12158 } }
     it 'should fill all the attributes' do
       expect(subject.x).to eq(0.45001)

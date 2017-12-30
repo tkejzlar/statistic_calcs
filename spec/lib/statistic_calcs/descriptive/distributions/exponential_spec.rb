@@ -9,7 +9,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::Exponential do
   subject { StatisticCalcs::Descriptive::Distributions::Exponential.new(options) }
 
   before { subject.calc! }
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { lambda: 45, x: 0.0698 } }
     it 'should fill all the attributes' do
       expect(subject.x).to eq(0.0698)
@@ -21,7 +21,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::Exponential do
     end
   end
 
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { lambda: 45, f_x: 0.95676 } }
     it 'should fill all the attributes' do
       expect(subject.x).to eq(0.0698)
@@ -33,7 +33,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::Exponential do
     end
   end
 
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { lambda: 45, g_x: 0.04324 } }
     it 'should fill all the attributes' do
       expect(subject.x).to eq(0.0698)
@@ -45,7 +45,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::Exponential do
     end
   end
 
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { lambda: 2, x: 0.1 } }
     it 'should fill all the attributes' do
       expect(subject.x).to eq(0.1)
@@ -57,7 +57,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::Exponential do
     end
   end
 
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { lambda: 2, f_x: 0.18127 } }
     it 'should fill all the attributes' do
       expect(subject.x).to eq(0.1)
@@ -69,7 +69,7 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::Exponential do
     end
   end
 
-  describe 'calc to get f, p & g' do
+  describe 'calc to get f(x), p(x) & g(x)' do
     let(:options) { { lambda: 2, g_x: 0.81873 } }
     it 'should fill all the attributes' do
       expect(subject.x).to eq(0.1)
