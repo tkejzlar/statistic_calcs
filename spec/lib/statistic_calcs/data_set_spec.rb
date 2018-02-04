@@ -60,3 +60,4 @@ RSpec.describe StatisticCalcs::DataSet do
     end
   end
 end
+# rubocop:enable BlockLength

@@ -2,7 +2,6 @@
 
 # rspec ./spec/lib/statistic_calcs/descriptive/distributions/pareto_spec.rb
 require 'statistic_calcs/descriptive/distributions/pareto.rb'
-require 'spec_helper'
 
 # rubocop:disable BlockLength
 RSpec.describe StatisticCalcs::Descriptive::Distributions::Pareto do
@@ -81,3 +80,4 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::Pareto do
     end
   end
 end
+# rubocop:enable BlockLength

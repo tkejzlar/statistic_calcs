@@ -2,7 +2,6 @@
 
 # rspec ./spec/lib/statistic_calcs/descriptive/distributions/normal_spec.rb
 require 'statistic_calcs/descriptive/distributions/normal.rb'
-require 'spec_helper'
 
 # rubocop:disable BlockLength
 RSpec.describe StatisticCalcs::Descriptive::Distributions::Normal do
@@ -155,3 +154,4 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::Normal do
     end
   end
 end
+# rubocop:enable BlockLength

@@ -2,7 +2,6 @@
 
 # rspec ./spec/lib/statistic_calcs/descriptive/distributions/fisher_snedecor_spec.rb
 require 'statistic_calcs/descriptive/distributions/fisher_snedecor.rb'
-require 'spec_helper'
 
 # rubocop:disable BlockLength
 RSpec.describe StatisticCalcs::Descriptive::Distributions::FisherSnedecor do
@@ -92,3 +91,4 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::FisherSnedecor do
     end
   end
 end
+# rubocop:enable BlockLength

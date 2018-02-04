@@ -1,5 +1,9 @@
 # StatisticCalcs
 
+[![Build Status](https://travis-ci.org/mberrueta/statistic_calcs.svg?branch=master)](https://travis-ci.org/mberrueta/statistic_calcs)
+![license](https://img.shields.io/github/license/mashape/apistatus.svg)
+![GitHub last commit](https://img.shields.io/github/last-commit/google/skia.svg)
+
 ## Overview
 
 This gem allow to calculate descriptive and inference statistic in many different scenarios.
@@ -36,6 +40,13 @@ It use the Gsl library through `https://github.com/SciRuby/rb-gsl` to make the c
 
 ## Installation
 
+**Note that the GSL libraries must already be installed before Ruby/GSL can be installed:**
+
+- Debian/Ubuntu: `sudo apt-get install libgsl0ldbl libgsl0-dev`
+- Fedora/SuSE: +gsl-devel+
+- Gentoo: +sci-libs/gsl+
+- OS X: `brew install gsl`
+
 Add this line to your application's Gemfile:
 
 ```ruby
@@ -44,11 +55,11 @@ gem 'statistic_calcs'
 
 And then execute:
 
-    $ bundle
+    `$ bundle`
 
 Or install it yourself as:
 
-    $ gem install statistic_calcs
+    `$ gem install statistic_calcs`
 
 ## Usage
 
@@ -68,7 +79,7 @@ Or install it yourself as:
   options = { mean: 0, standard_deviation: 1, g_x: 0.07493 }
 ```
 
-_Also some of the distibution has aliases for their values to make it easier to use_
+#### Also some of the distibution has aliases for their values to make it easier to use
 
 Example:
 
@@ -111,7 +122,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/mberrueta/statistic_calcs. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at `https://github.com/mberrueta/statistic_calcs`. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 

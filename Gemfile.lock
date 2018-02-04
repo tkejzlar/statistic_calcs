@@ -1,12 +1,7 @@
-PATH
-  remote: .
-  specs:
-    statistic_calcs (0.1.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
-    binding_of_caller (0.7.3)
+    binding_of_caller (0.8.0)
       debug_inspector (>= 0.0.1)
     byebug (9.1.0)
     coderay (1.1.2)
@@ -21,7 +16,7 @@ GEM
     pry-byebug (3.5.1)
       byebug (~> 9.1)
       pry (~> 0.10)
-    pry-doc (0.11.1)
+    pry-doc (0.12.0)
       pry (~> 0.9)
       yard (~> 0.9)
     pry-inline (1.0.4)
@@ -33,12 +28,11 @@ GEM
     pry-stack_explorer (0.4.9.2)
       binding_of_caller (>= 0.7)
       pry (>= 0.9.11)
-    rake (10.5.0)
     rspec (3.7.0)
       rspec-core (~> 3.7.0)
       rspec-expectations (~> 3.7.0)
       rspec-mocks (~> 3.7.0)
-    rspec-core (3.7.0)
+    rspec-core (3.7.1)
       rspec-support (~> 3.7.0)
     rspec-expectations (3.7.0)
       diff-lcs (>= 1.2.0, < 2.0)
@@ -46,7 +40,7 @@ GEM
     rspec-mocks (3.7.0)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.7.0)
-    rspec-support (3.7.0)
+    rspec-support (3.7.1)
     unicode (0.4.4.4)
     yard (0.9.12)
 
@@ -54,7 +48,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler (~> 1.16)
   gsl
   pry
   pry-byebug
@@ -62,9 +55,7 @@ DEPENDENCIES
   pry-inline
   pry-rescue
   pry-stack_explorer
-  rake (~> 10.0)
   rspec
-  statistic_calcs!
 
 BUNDLED WITH
    1.16.0

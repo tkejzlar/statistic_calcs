@@ -2,7 +2,6 @@
 
 # rspec ./spec/lib/statistic_calcs/descriptive/distributions/weibull_spec.rb
 require 'statistic_calcs/descriptive/distributions/weibull.rb'
-require 'spec_helper'
 
 # rubocop:disable BlockLength
 RSpec.describe StatisticCalcs::Descriptive::Distributions::Weibull do
@@ -48,3 +47,4 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::Weibull do
     end
   end
 end
+# rubocop:enable BlockLength

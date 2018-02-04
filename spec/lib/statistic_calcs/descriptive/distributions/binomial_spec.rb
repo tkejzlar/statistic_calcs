@@ -2,7 +2,6 @@
 
 # rspec ./spec/lib/statistic_calcs/descriptive/distributions/binomial_spec.rb
 require 'statistic_calcs/descriptive/distributions/binomial.rb'
-require 'spec_helper'
 
 # rubocop:disable BlockLength
 RSpec.describe StatisticCalcs::Descriptive::Distributions::Binomial do
@@ -216,3 +215,4 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::Binomial do
     end
   end
 end
+# rubocop:enable BlockLength

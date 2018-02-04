@@ -2,7 +2,6 @@
 
 # rspec ./spec/lib/statistic_calcs/descriptive/distributions/gumbel_maximum_spec.rb
 require 'statistic_calcs/descriptive/distributions/gumbel_maximum.rb'
-require 'spec_helper'
 
 RSpec.describe StatisticCalcs::Descriptive::Distributions::GumbelMaximum do
   subject { StatisticCalcs::Descriptive::Distributions::GumbelMaximum.new(options) }

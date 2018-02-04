@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 # rspec ./spec/lib/statistic_calcs/descriptive/distributions/Hyperpascal_spec.rb
-require 'statistic_calcs/descriptive/distributions/Hyperpascal.rb'
-require 'spec_helper'
+require 'statistic_calcs/descriptive/distributions/hyperpascal.rb'
 
 RSpec.describe StatisticCalcs::Descriptive::Distributions::Hyperpascal do
   subject { StatisticCalcs::Descriptive::Distributions::Hyperpascal.new(options) }
