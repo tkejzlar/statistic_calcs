@@ -1,13 +1,13 @@
+.vscode/
+*gem
+/_yardoc/
 /.bundle/
 /.yardoc
-/_yardoc/
 /coverage/
 /doc/
 /pkg/
 /spec/reports/
 /tmp/
-*gem
 
 # rspec failure tracking
 .rspec_status
-.vscode/

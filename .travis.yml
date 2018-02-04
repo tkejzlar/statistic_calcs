@@ -2,4 +2,12 @@ sudo: false
 language: ruby
 rvm:
   - 2.3.4
-before_install: gem install bundler -v 1.16.0
+
+before_install:
+  - sudo apt-get install libgsl0ldbl libgsl0-dev
+  - gem install bundler -v 1.16.0
+
+script:
+  - ls
+  - export RAILS_ENV=test
+  - bundle exec rspec

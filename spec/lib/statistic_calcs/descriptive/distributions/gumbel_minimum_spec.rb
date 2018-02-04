@@ -2,7 +2,6 @@
 
 # rspec ./spec/lib/statistic_calcs/descriptive/distributions/gumbel_minimum_spec.rb
 require 'statistic_calcs/descriptive/distributions/gumbel_minimum.rb'
-require 'spec_helper'
 
 RSpec.describe StatisticCalcs::Descriptive::Distributions::GumbelMinimum do
   subject { StatisticCalcs::Descriptive::Distributions::GumbelMinimum.new(options) }
