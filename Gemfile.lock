@@ -6,9 +6,9 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    binding_of_caller (0.7.3)
+    binding_of_caller (0.8.0)
       debug_inspector (>= 0.0.1)
-    byebug (9.1.0)
+    byebug (10.0.0)
     coderay (1.1.2)
     debug_inspector (0.0.3)
     diff-lcs (1.3)
@@ -18,10 +18,10 @@ GEM
     pry (0.11.3)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
-    pry-byebug (3.5.1)
-      byebug (~> 9.1)
+    pry-byebug (3.6.0)
+      byebug (~> 10.0)
       pry (~> 0.10)
-    pry-doc (0.11.1)
+    pry-doc (0.12.0)
       pry (~> 0.9)
       yard (~> 0.9)
     pry-inline (1.0.4)
@@ -38,7 +38,7 @@ GEM
       rspec-core (~> 3.7.0)
       rspec-expectations (~> 3.7.0)
       rspec-mocks (~> 3.7.0)
-    rspec-core (3.7.0)
+    rspec-core (3.7.1)
       rspec-support (~> 3.7.0)
     rspec-expectations (3.7.0)
       diff-lcs (>= 1.2.0, < 2.0)
@@ -46,7 +46,7 @@ GEM
     rspec-mocks (3.7.0)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.7.0)
-    rspec-support (3.7.0)
+    rspec-support (3.7.1)
     unicode (0.4.4.4)
     yard (0.9.12)
 
@@ -67,4 +67,4 @@ DEPENDENCIES
   statistic_calcs!
 
 BUNDLED WITH
-   1.16.0
+   1.16.1
