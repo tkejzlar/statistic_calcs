@@ -2,7 +2,6 @@
 
 # rspec ./spec/lib/statistic_calcs/descriptive/distributions/hypergeometric_spec.rb
 require 'statistic_calcs/descriptive/distributions/hypergeometric.rb'
-require 'spec_helper'
 
 RSpec.describe StatisticCalcs::Descriptive::Distributions::Hypergeometric do
   subject { StatisticCalcs::Descriptive::Distributions::Hypergeometric.new(options) }

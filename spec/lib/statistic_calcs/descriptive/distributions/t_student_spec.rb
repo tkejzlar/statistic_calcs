@@ -2,7 +2,6 @@
 
 # rspec ./spec/lib/statistic_calcs/descriptive/distributions/t_student_spec.rb
 require 'statistic_calcs/descriptive/distributions/t_student.rb'
-require 'spec_helper'
 
 # rubocop:disable BlockLength
 RSpec.describe StatisticCalcs::Descriptive::Distributions::TStudent do
@@ -81,3 +80,4 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::TStudent do
     end
   end
 end
+# rubocop:enable BlockLength

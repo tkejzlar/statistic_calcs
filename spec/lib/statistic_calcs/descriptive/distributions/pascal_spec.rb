@@ -2,7 +2,6 @@
 
 # rspec ./spec/lib/statistic_calcs/descriptive/distributions/pascal_spec.rb
 require 'statistic_calcs/descriptive/distributions/pascal.rb'
-require 'spec_helper'
 
 RSpec.describe StatisticCalcs::Descriptive::Distributions::Pascal do
   subject { StatisticCalcs::Descriptive::Distributions::Pascal.new(options) }

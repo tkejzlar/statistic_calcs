@@ -2,7 +2,6 @@
 
 # rspec ./spec/lib/statistic_calcs/descriptive/distributions/beta_spec.rb
 require 'statistic_calcs/descriptive/distributions/beta.rb'
-require 'spec_helper'
 
 # rubocop:disable BlockLength
 RSpec.describe StatisticCalcs::Descriptive::Distributions::Beta do
@@ -86,3 +85,4 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::Beta do
     end
   end
 end
+# rubocop:enable BlockLength

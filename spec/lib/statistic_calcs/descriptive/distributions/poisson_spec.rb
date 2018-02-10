@@ -2,7 +2,6 @@
 
 # rspec ./spec/lib/statistic_calcs/descriptive/distributions/poisson_spec.rb
 require 'statistic_calcs/descriptive/distributions/poisson.rb'
-require 'spec_helper'
 
 # rubocop:disable BlockLength
 RSpec.describe StatisticCalcs::Descriptive::Distributions::Poisson do
@@ -48,3 +47,4 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::Poisson do
     end
   end
 end
+# rubocop:enable BlockLength

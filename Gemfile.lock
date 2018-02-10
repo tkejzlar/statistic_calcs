@@ -1,8 +1,3 @@
-PATH
-  remote: .
-  specs:
-    statistic_calcs (0.1.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -33,7 +28,6 @@ GEM
     pry-stack_explorer (0.4.9.2)
       binding_of_caller (>= 0.7)
       pry (>= 0.9.11)
-    rake (10.5.0)
     rspec (3.7.0)
       rspec-core (~> 3.7.0)
       rspec-expectations (~> 3.7.0)
@@ -54,7 +48,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler (~> 1.16)
   gsl
   pry
   pry-byebug
@@ -62,9 +55,7 @@ DEPENDENCIES
   pry-inline
   pry-rescue
   pry-stack_explorer
-  rake (~> 10.0)
   rspec
-  statistic_calcs!
 
 BUNDLED WITH
    1.16.1

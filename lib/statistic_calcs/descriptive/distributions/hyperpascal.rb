@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'statistic_calcs/descriptive/distributions/discrete.rb'
-
 module StatisticCalcs
   module Descriptive
     module Distributions

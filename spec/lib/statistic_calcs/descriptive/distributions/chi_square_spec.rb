@@ -2,7 +2,6 @@
 
 # rspec ./spec/lib/statistic_calcs/descriptive/distributions/chi_square_spec.rb
 require 'statistic_calcs/descriptive/distributions/chi_square.rb'
-require 'spec_helper'
 
 # rubocop:disable BlockLength
 RSpec.describe StatisticCalcs::Descriptive::Distributions::ChiSquare do
@@ -87,3 +86,4 @@ RSpec.describe StatisticCalcs::Descriptive::Distributions::ChiSquare do
     end
   end
 end
+# rubocop:enable BlockLength
