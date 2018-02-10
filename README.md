@@ -9,7 +9,24 @@
 This gem allow to calculate descriptive and inference statistic in many different scenarios.
 It use the Gsl library through `https://github.com/SciRuby/rb-gsl` to make the calculation faster.
 
-### Discrete Distributions
+### Descriptive
+
+Summary statistics that quantitatively describe or summarize features of a collection of information.
+
+#### Datasets Analysis
+
+Get the `mean`, `variance`, `standard_deviation`, `max`, `min`, `skew`, `kurtosis`, `median`, `mode`, etc from a dataset.
+
+- Simple numbers arrays
+- Lower-Upper boundary arrays (rage/grouped data)
+
+#### Distributions
+
+Get the `mean`, `variance`, `standard_deviation`, `median`, `skewness`, `kurtosis`, `coefficient_variation`, `cumulative_less_than_x_probability`, `cumulative_greater_than_x_probability`, etc from statistics distributions.
+
+##### Discrete
+
+Properties of observable (either finite or countably infinite) pre-defined values.
 
 - beta
 - chi_square
@@ -24,7 +41,9 @@ It use the Gsl library through `https://github.com/SciRuby/rb-gsl` to make the c
 - t_student
 - weibull
 
-### Continuos Distributions
+##### Continuos
+
+Properties of infinite number of outcomes.
 
 - binomial
 - geometric
@@ -33,10 +52,23 @@ It use the Gsl library through `https://github.com/SciRuby/rb-gsl` to make the c
 - pascal
 - poisson
 
-### Datasets
+### Inference
 
-- simple numbers arrays
-- lower-upper boundary arrays
+Process of deducing properties of an underlying probability distribution by analysis of data.
+Inferential statistical analysis infers properties about a unknowns population.
+
+#### Testing hypotheses
+
+#### Mean
+
+Inference the `mean`, `deviation_amount` (`z`), `sample_size`, `upper-lower limits`, `sample deviations`, etc.
+
+- Known Sigma
+- Unknown Sigma
+
+#### Variance
+
+#### P Bernulli process
 
 ## Installation
 
@@ -113,6 +145,12 @@ Example:
          )
   calc.analyze!
 ```
+
+### Mean inference
+
+# TODO: complete
+```ruby
+````
 
 ## Development
 
