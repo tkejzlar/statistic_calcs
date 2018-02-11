@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'statistic_calcs/helpers/alias_attributes.rb'
-require 'statistic_calcs/descriptive/distributions/normal.rb'
 
 module StatisticCalcs
   module Inference
@@ -17,7 +16,6 @@ module StatisticCalcs
       attr_alias :size, :population_size
       attr_alias :lower_limit, :population_mean_lower_limit
       attr_alias :upper_limit, :population_mean_upper_limit
-      attr_alias :z, :deviation_amount
 
       # TODO: Repeated code in base.rb
       def initialize(args)
@@ -27,17 +25,29 @@ module StatisticCalcs
       end
 
       def calc!
-        self.alpha ||= 0.05
-        calc_sample_size! unless sample_size
+        init!
+        validate!
+        calculate!
+      end
 
-        self.z = normal_dist.calc!.x
-        self.sample_error = z * standard_deviation / Math.sqrt(sample_size) * finite_population_correction
+      private
+
+      def init!
+        self.alpha ||= 0.05
+      end
+
+      def validate!
+        raise StandardError, 'alpha should be between 0 and 1' unless alpha.between?(0, 1)
+        raise StandardError, 'sample_size or sample_error is required' unless sample_error || sample_size
+      end
+
+      def calculate!
+        calc_sample_size! unless sample_size
+        self.sample_error ||= deviation_amount * standard_deviation / Math.sqrt(sample_size) * finite_population_correction
         self.lower_limit = sample_mean - sample_error
         self.upper_limit = sample_mean + sample_error
         self.sample_error = sample_error.ceil
       end
-
-      private
 
       # Correction factor when the population size is known
       def finite_population_correction
@@ -48,11 +58,7 @@ module StatisticCalcs
       def calc_sample_size!
         self.sample_size = ((z * standard_deviation / sample_error)**2).ceil
         # Correction factor when the population size is known
-        self.sample_size = (population_size * sample_size / population_size + sample_size).ceil if population_size
-      end
-
-      def normal_dist
-        StatisticCalcs::Descriptive::Distributions::Normal.new(f_x: 1.0 - alpha)
+        self.sample_size = (population_size.to_f * sample_size / (population_size + sample_size)).ceil if population_size
       end
     end
   end

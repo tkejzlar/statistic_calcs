@@ -148,9 +148,49 @@ Example:
 
 ### Mean inference
 
-# TODO: complete
+#### Known population standard deviation
+
+To calculate the population lower and upper limits, knowing sigma.
+
 ```ruby
-````
+  options = { alpha: 0.1, standard_deviation: 15.0, sample_size: 10, sample_mean: 246.0 }
+  calculator = StatisticCalcs::Inference::KnownSigmaMean.new(options)
+  calculator.calc!
+  # @deviation_amount=1.64485 (z-normal), @population_mean_lower_limit=238.19779138600805, @population_mean_upper_limit=253.80220861399195, @population_standard_deviation=15.0, @sample_error=8
+```
+
+To calculate the sample size.
+
+```ruby
+  options = { alpha: 0.1, standard_deviation: 15.0, sample_mean: 246.0, sample_error: 5 }
+  calculator = StatisticCalcs::Inference::KnownSigmaMean.new(options)
+  calculator.calc!
+  # @sample_size=25
+```
+
+#### Important. If you know the total population size, adding will correct the values.
+
+`population_size: 900`
+
+To calculate the population lower and upper limits, if you doesn't know sigma.
+
+```ruby
+ options = { alpha: 0.05, sample_standard_deviation: 1.7935, sample_size: 4, sample_mean: 17.35 }
+  calculator = StatisticCalcs::Inference::KnownSigmaMean.new(options)
+  calculator.calc!
+  # @deviation_amount=1.64485 (z-normal), @population_mean_lower_limit=238.19779138600805, @population_mean_upper_limit=253.80220861399195, @population_standard_deviation=15.0, @sample_error=8
+```
+
+#### Unknown population standard deviation
+
+Will use the sample standard deviation:
+
+```ruby
+  options = { alpha: 0.05, sample_standard_deviation: 1.7935, sample_size: 4, sample_mean: 17.35 }
+  calculator = StatisticCalcs::Inference::UnknownSigmaMean.new(options)
+  calculator.calc!
+  # @deviation_amount=3.18245 (t student), @population_mean_lower_limit=14.4961..., @population_mean_upper_limit=20.2038..., @sample_error=3
+```
 
 ## Development
 
