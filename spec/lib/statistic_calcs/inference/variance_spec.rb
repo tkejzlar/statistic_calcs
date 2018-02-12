@@ -17,13 +17,13 @@ RSpec.describe StatisticCalcs::Inference::Variance do
         expect(subject.upper_limit).to eq(30_681.989398276877)
         expect(subject.limits_relationship_variance).to eq(3.6046452166687213)
         expect(subject.degrees_of_freedom).to eq(14)
-        expect(subject.sample_error).to eq(11085.098826724117)
+        expect(subject.sample_error).to eq(11_085.098826724117)
       end
     end
-    
+
     describe 'calc to the population lower and upper limits' do
       let(:options) { { alpha: 0.1, sample_variance: 0.03701776, sample_size: 5 } }
-      
+
       it 'should fill all the attributes' do
         expect(subject.lower_limit).to eq(0.01560658239642148)
         expect(subject.upper_limit).to eq(0.2083394867176947)
@@ -43,7 +43,6 @@ RSpec.describe StatisticCalcs::Inference::Variance do
     end
   end
 
- 
   context 'Errors' do
     describe 'raise validation error' do
       let(:options) { { alpha: 1.1, sample_variance: 14_400, sample_size: 15 } }

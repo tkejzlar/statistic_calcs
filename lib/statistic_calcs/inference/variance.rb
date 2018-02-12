@@ -24,6 +24,7 @@ module StatisticCalcs
         init!
         validate!
         calculate!
+        self
       end
 
       private
@@ -41,7 +42,6 @@ module StatisticCalcs
 
       def calculate!
         calc_sample_size! unless sample_size
-
 
         chi_inf_variance = chi_square_dist(1 - (alpha / 2)).calc!.x
         chi_sup_variance = chi_square_dist(alpha / 2).calc!.x

@@ -197,13 +197,54 @@ Will use the sample standard deviation:
   options = { alpha: 0.05, sample_standard_deviation: 1.7935, sample_size: 4, sample_mean: 17.35 }
   calculator = StatisticCalcs::Inference::UnknownSigmaMean.new(options)
   calculator.calc!
-  # @deviation_amount=3.18245 (t student), @population_mean_lower_limit=14.4961..., @population_mean_upper_limit=20.2038..., @sample_error=3
+  calculator.to_h # @deviation_amount=3.18245 (t student), @population_mean_lower_limit=14.4961..., @population_mean_upper_limit=20.2038..., @sample_error=3
 ```
 
 ### Variance inference
 
+Will use the sample variance to estimate the population variance with a error:
+So the pop variance will be X +/- error -> will be between lower_limit < x < upper_limit
+
+```ruby
+  options = { alpha: 0.1, sample_variance: 14_400, sample_size: 15 }
+  calculator = StatisticCalcs::Inference::Variance.new(options)
+  calculator.calc!
+  calculator.to_h
+  # { :degrees_of_freedom=>14, :population_variance_lower_limit=>8511.791744828643,  :population_variance_upper_limit=>30681.989398276877,  :sample_error=>11085.098826724117, :limits_relationship_variance=>3.6046452166687213}
+```
+
+To estimate how to improve an error, and get how much samples you will need, it use the relationship between lower and upper,
+so the R = B /A -> improving the R will improve the error
+
+```ruby
+  options = { alpha: 0.1, sample_variance: 14_400, limits_relationship_variance: 4 }
+  calculator = StatisticCalcs::Inference::Variance.new(options)
+  calculator.calc!
+  calculator.to_h
+  # { :sample_size=>14, :degrees_of_freedom=>13 }
+```
+
 ### Standard deviation inference
 
+Same as variance, can be used to estimate the standard deviation of the total population
+
+```ruby
+  options = { alpha: 0.1, sample_standard_deviation: 120, sample_size: 15 }
+  calculator = StatisticCalcs::Inference::StandardDeviation.new(options)
+  calculator.calc!
+  calculator.to_h
+  # { degrees_of_freedom=>14, :limits_relationship_standard_deviation=>1.8985903235476371, :population_standard_deviation_lower_limit=>92.25937212461747, :population_standard_deviation_upper_limit=>175.16275117237933,  :sample_error=>41.45168952388093 }
+```
+
+Same as variance, to improve the error
+
+```ruby
+  options = { alpha: 0.1, sample_standard_deviation: 14_400, limits_relationship_variance: 4 }
+  calculator = StatisticCalcs::Inference::StandardDeviation.new(options)
+  calculator.calc!
+  calculator.to_h
+  # { :sample_size=>14, :degrees_of_freedom=>13 }
+```
 
 ## Development
 
