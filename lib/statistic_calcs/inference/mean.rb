@@ -4,6 +4,8 @@ require 'statistic_calcs/helpers/alias_attributes.rb'
 
 module StatisticCalcs
   module Inference
+    # Inference the `mean upper-lower limits`, `deviation_amount`, `sample_size`, `sample deviations`, etc.
+    # From a population, knowing information of a sample group
     class Mean
       include StatisticCalcs::Helpers::AliasAttributes
 
@@ -16,13 +18,6 @@ module StatisticCalcs
       attr_alias :size, :population_size
       attr_alias :lower_limit, :population_mean_lower_limit
       attr_alias :upper_limit, :population_mean_upper_limit
-
-      # TODO: Repeated code in base.rb
-      def initialize(args)
-        args.each do |key, value|
-          send("#{key}=", value) unless value.nil?
-        end
-      end
 
       def calc!
         init!

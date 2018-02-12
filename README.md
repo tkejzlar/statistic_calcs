@@ -59,16 +59,25 @@ Inferential statistical analysis infers properties about a unknowns population.
 
 #### Testing hypotheses
 
+# TODO: to be impleted
+
 #### Mean
 
-Inference the `mean`, `deviation_amount` (`z`), `sample_size`, `upper-lower limits`, `sample deviations`, etc.
+Inference the `mean upper-lower limits`, `deviation_amount`, `sample_size`, `sample deviations`, etc.
 
 - Known Sigma
 - Unknown Sigma
 
 #### Variance
 
+Inference the `variance upper-lower limits`, `sample error`, `error relationship between limits`, `sample size`.
+
+- Variance
+- Standard deviation
+
 #### P Bernulli process
+
+# TODO: to be impleted
 
 ## Installation
 
@@ -102,7 +111,7 @@ Or install it yourself as:
   options = { mean: 0, standard_deviation: 1, x: 1.64489 }
   dist = StatisticCalcs::Descriptive::Distributions::Normal.new(options)
   dist.calc!
-  subject.to_h # {:mean=>0, :standard_deviation=>1, :x=>1.64489, :cumulative_less_than_x_probability=>0.95, :cumulative_greater_than_x_probability=>0.05, :variance=>1}
+  dist.to_h # {:mean=>0, :standard_deviation=>1, :x=>1.64489, :cumulative_less_than_x_probability=>0.95, :cumulative_greater_than_x_probability=>0.05, :variance=>1}
 
   # calc to get f(x) & g(x), knowing f_x
   options = { mean: 0, standard_deviation: 1, f_x: 0.92507 }
@@ -132,8 +141,7 @@ Example:
   calc = StatisticCalcs::DataSet.new(x_values: array)
   calc.analyze! # @kurtosis=-1.76886, @max=3.4, @mean=0.475, @median=1.75, @min=-5.0, @skew=-0.62433, @standard_deviation=3.758878378807522, @variance=14.12917
 
-  # with lower-upper boindary values
-
+  # with lower-upper boundary values
   x_values = [1.2, 2.3, 3.4, 1]
   lower_class_boundary_values = [1.2, 4.3, 9.4, 14.5]
   upper_class_boundary_values = [4.3, 9.4, 14.5, 19.6]
@@ -191,6 +199,11 @@ Will use the sample standard deviation:
   calculator.calc!
   # @deviation_amount=3.18245 (t student), @population_mean_lower_limit=14.4961..., @population_mean_upper_limit=20.2038..., @sample_error=3
 ```
+
+### Variance inference
+
+### Standard deviation inference
+
 
 ## Development
 

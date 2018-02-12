@@ -21,31 +21,12 @@ module StatisticCalcs
         attr_alias :sd, :standard_deviation
         attr_alias :cv, :coefficient_variation
 
-        def initialize(args)
-          args.each do |key, value|
-            send("#{key}=", value) unless value.nil?
-          end
-        end
-
         def calc!
           self.variance ||= standard_deviation**2 if standard_deviation
           self.standard_deviation ||= Math.sqrt(variance) if variance&.positive?
           self.coefficient_variation = variance || 0 / mean if mean&.positive?
           round_all!
           self
-        end
-
-        def to_h
-          instance_variables.each_with_object({}) do |var, hash|
-            hash[var.to_s.delete('@').to_sym] = instance_variable_get(var)
-          end
-        end
-
-        def to_s
-          "#{self.class.name}: " +
-            instance_variables
-            .map { |var| "#{var.to_s.delete('@')} = #{instance_variable_get(var)}" }
-            .join(', ')
         end
 
         private
