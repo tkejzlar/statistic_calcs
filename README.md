@@ -180,11 +180,11 @@ To calculate the sample size.
 
 `population_size: 900`
 
-To calculate the population lower and upper limits, if you doesn't know sigma.
+To calculate the population lower and upper limits, if you doesn't know sigma, you can use the `sample santandard deviation`.
 
 ```ruby
  options = { alpha: 0.05, sample_standard_deviation: 1.7935, sample_size: 4, sample_mean: 17.35 }
-  calculator = StatisticCalcs::Inference::KnownSigmaMean.new(options)
+  calculator = StatisticCalcs::Inference::UnknownSigmaMean.new(options)
   calculator.calc!
   # @deviation_amount=1.64485 (z-normal), @population_mean_lower_limit=238.19779138600805, @population_mean_upper_limit=253.80220861399195, @population_standard_deviation=15.0, @sample_error=8
 ```
