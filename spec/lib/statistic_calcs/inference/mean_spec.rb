@@ -43,14 +43,14 @@ RSpec.describe StatisticCalcs::Inference::KnownSigmaMean do
         let(:options) { { alpha: 1.01, standard_deviation: 15.0, sample_size: 10, sample_mean: 246.0 } }
 
         it 'should fill all the attributes' do
-          expect { subject.calc! }.to raise_error(StandardError)
+          expect { subject.calc! }.to raise_error(StandardError, 'alpha should be between 0 and 1')
         end
       end
 
       describe 'raise validation error' do
         let(:options) { { alpha: 0.1, standard_deviation: 15.0, sample_mean: 246.0 } }
         it 'should fill all the attributes' do
-          expect { subject.calc! }.to raise_error(StandardError)
+          expect { subject.calc! }.to raise_error(StandardError, 'sample_size or sample_error is required')
         end
       end
     end

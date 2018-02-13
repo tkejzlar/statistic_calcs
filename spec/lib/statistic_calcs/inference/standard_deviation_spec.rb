@@ -48,7 +48,7 @@ RSpec.describe StatisticCalcs::Inference::StandardDeviation do
       let(:options) { { alpha: 1.1, sample_standard_deviation: 14_400, sample_size: 15 } }
 
       it 'should fill all the attributes' do
-        expect { subject.calc! }.to raise_error(StandardError)
+        expect { subject.calc! }.to raise_error(StandardError, 'alpha should be between 0 and 1')
       end
     end
 
@@ -56,7 +56,7 @@ RSpec.describe StatisticCalcs::Inference::StandardDeviation do
       let(:options) { { alpha: 0.1, sample_standard_deviation: 14_400 } }
 
       it 'should fill all the attributes' do
-        expect { subject.calc! }.to raise_error(StandardError)
+        expect { subject.calc! }.to raise_error(StandardError, 'limits_relationship_standard_deviation is required to calculate the sample size')
       end
     end
 
@@ -64,7 +64,7 @@ RSpec.describe StatisticCalcs::Inference::StandardDeviation do
       let(:options) { { alpha: 0.1, sample_standard_deviation: 14_400, limits_relationship_standard_deviation: 1 } }
 
       it 'should fill all the attributes' do
-        expect { subject.calc! }.to raise_error(StandardError)
+        expect { subject.calc! }.to raise_error(StandardError, 'limits_relationship_standard_deviation <> 1 is required to calculate the sample size')
       end
     end
   end

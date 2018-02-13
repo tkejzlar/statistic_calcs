@@ -2,12 +2,15 @@
 
 require 'statistic_calcs/helpers/alias_attributes.rb'
 require 'statistic_calcs/inference/variance.rb'
+require 'statistic_calcs/inference/errorable.rb'
 
 module StatisticCalcs
   module Inference
-    # Inference the `standard deviation upper-lower limits`, `sample error`, `error relationship between limits`, `sample size`.
+    # Inference the `standard deviation upper-lower limits` `P(A < sigma < B) = 1 - alpha`
+    # or the `sample size`.
     # From a population, knowing information of a sample group
     class StandardDeviation
+      include StatisticCalcs::Inference::Errorable
       include StatisticCalcs::Helpers::AliasAttributes
 
       attr_accessor :population_standard_deviation_lower_limit, :population_standard_deviation_upper_limit, :limits_relationship_standard_deviation,
@@ -28,12 +31,12 @@ module StatisticCalcs
       private
 
       def init!
-        self.alpha ||= 0.05
+        super
         self.degrees_of_freedom ||= sample_size - 1 if sample_size
       end
 
       def validate!
-        raise StandardError, 'alpha should be between 0 and 1' unless alpha.between?(0, 1)
+        super
         raise StandardError, 'limits_relationship_standard_deviation is required to calculate the sample size' if sample_size.nil? && r.nil?
         raise StandardError, 'limits_relationship_standard_deviation <> 1 is required to calculate the sample size' if r == 1
       end

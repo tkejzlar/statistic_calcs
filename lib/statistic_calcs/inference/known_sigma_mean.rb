@@ -5,6 +5,8 @@ require 'statistic_calcs/descriptive/distributions/normal.rb'
 
 module StatisticCalcs
   module Inference
+    # If you know the standard deviation of the population
+    # The population mean have a standard Normal behavior
     class KnownSigmaMean < Mean
       attr_accessor :population_standard_deviation
 

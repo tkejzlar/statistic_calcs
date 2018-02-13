@@ -1,20 +1,23 @@
 # frozen_string_literal: true
 
 require 'statistic_calcs/helpers/alias_attributes.rb'
+require 'statistic_calcs/inference/errorable.rb'
 
 module StatisticCalcs
   module Inference
-    # Inference the `mean upper-lower limits`, `deviation_amount`, `sample_size`, `sample deviations`, etc.
-    # From a population, knowing information of a sample group
+    # The estimation of the population mean, is calculated using `x`` (average of a sample)
+    # Inference the `mean upper-lower limits` `P(A < mu < B) = 1 - alpha`
+    # or the `sample_size` if you define the `sample_error`
     class Mean
+      include StatisticCalcs::Inference::Errorable
       include StatisticCalcs::Helpers::AliasAttributes
 
-      attr_accessor :population_mean, :population_size, :population_mean_lower_limit, :population_mean_upper_limit,
+      attr_accessor :population_size, :population_mean_lower_limit, :population_mean_upper_limit,
                     :sample_size, :sample_mean,
-                    :alpha, :beta, :deviation_amount, :sample_error
+                    :deviation_amount, :sample_error
 
-      attr_alias :mean, :population_mean
-      attr_alias :mu, :mean
+      attr_alias :x, :sample_mean
+      attr_alias :n, :population_size
       attr_alias :size, :population_size
       attr_alias :lower_limit, :population_mean_lower_limit
       attr_alias :upper_limit, :population_mean_upper_limit
@@ -27,12 +30,8 @@ module StatisticCalcs
 
       private
 
-      def init!
-        self.alpha ||= 0.05
-      end
-
       def validate!
-        raise StandardError, 'alpha should be between 0 and 1' unless alpha.between?(0, 1)
+        super
         raise StandardError, 'sample_size or sample_error is required' unless sample_error || sample_size
       end
 
