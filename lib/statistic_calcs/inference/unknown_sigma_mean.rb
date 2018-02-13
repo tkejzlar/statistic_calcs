@@ -5,7 +5,9 @@ require 'statistic_calcs/descriptive/distributions/t_student.rb'
 
 module StatisticCalcs
   module Inference
-    # This class will use a sample standard deviation to inference the sample mean
+    # If you don't know the standard deviation of the population
+    # you can use the sample one.
+    # The population mean have a t Student behavior
     class UnknownSigmaMean < Mean
       attr_accessor :sample_standard_deviation
 

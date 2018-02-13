@@ -57,27 +57,42 @@ Properties of infinite number of outcomes.
 Process of deducing properties of an underlying probability distribution by analysis of data.
 Inferential statistical analysis infers properties about a unknowns population.
 
+- Mean Known Sigma `P(A < mu < B) = 1 - alpha`
+- Mean Unknown Sigma `P(A < mu < B) = 1 - alpha`
+- Variance `P(A < sigma^2 < B) = 1 - alpha`
+- Standard deviation `P(A < sigma < B) = 1 - alpha`
+- P Bernulli process `P(A < p < B) = 1 - alpha`
+
 #### Testing hypotheses
 
-# TODO: to be impleted
+Test `Type 1`, `Type 2` or `Type 3` hypotheses over
 
-#### Mean
+- Mean Known Sigma
+- Mean Unknown Sigma
+- Variance
+- Standard deviation
+- P Bernulli process
 
-Inference the `mean upper-lower limits`, `deviation_amount`, `sample_size`, `sample deviations`, etc.
+#### Comparing population parameters
 
-- Known Sigma
-- Unknown Sigma
+Compare 2 parameters to determine if one os greater than other
 
-#### Variance
-
-Inference the `variance upper-lower limits`, `sample error`, `error relationship between limits`, `sample size`.
-
+- Mean Known Sigma
+- Mean Unknown Sigma
+- Mean Independent population
 - Variance
 - Standard deviation
 
-#### P Bernulli process
+#### Data set tests
 
-# TODO: to be impleted
+- Independence
+- Chi-square contrast
+- Goodness of fit
+
+#### Regression and correlation analysis
+
+- Simple lineal
+- Multiple lineal
 
 ## Installation
 
@@ -245,6 +260,39 @@ Same as variance, to improve the error
   calculator.to_h
   # { :sample_size=>14, :degrees_of_freedom=>13 }
 ```
+
+### P of Bernoulli process inference
+
+In a Bernoulli process, if the sampling is made to the Binomial
+the size of the sample `n` is fixed and the number of successes obtained `r` is observed in the sample.
+
+Therefore, the estimator `p` is a random variable of Binomial behavior
+corresponding to the probability of success of the Process a Bernoulli Process.
+Sample p'= r /n and population is P(A < p < B) = 1 - alpha.
+
+```ruby
+  options = { alpha: 0.1, n: 30, r: 3 }
+  calculator = StatisticCalcs::Inference::PBernoulliProcess.new(options)
+  calculator.calc!
+  calculator.to_h
+  # { :confidence_level=>0.9, :sample_probability_of_success=>0.1, :probability_of_success_lower_limit=>0.02782, :probability_of_success_upper_limit=>0.2386, :sample_error=>0.10539 }
+```
+
+#### Testing hypotheses
+
+TODO: to be impleted - priority 3
+
+#### Comparing population parameters
+
+TODO: to be impleted - priority 4
+
+#### Data set tests
+
+TODO: to be impleted - priority 2
+
+#### Regression and correlation analysis
+
+TODO: to be impleted - priority 1
 
 ## Development
 
