@@ -7,7 +7,7 @@ module StatisticCalcs
   module Descriptive
     module Distributions
       # Binomial distribution with parameters number_trials (n) and probability_of_success (p)
-      # is the discrete probability distribution of the number_successes (r) in a sequence 
+      # is the discrete probability distribution of the number_successes (r) in a sequence
       # of number_trials independent experiments
       # ref: https://en.wikipedia.org/wiki/Binomial_distribution
       #

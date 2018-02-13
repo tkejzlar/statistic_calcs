@@ -13,6 +13,8 @@ module StatisticCalcs
         attr_accessor :x
 
         def calc!
+          self.mean ||= 0.0
+          self.standard_deviation ||= 1.0
           super
         end
 
