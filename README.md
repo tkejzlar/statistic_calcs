@@ -284,7 +284,43 @@ TODO: to be impleted - priority 2
 
 #### Regression and correlation analysis
 
-TODO: to be impleted - priority 1
+##### Simple lineal regression
+
+Estimation of a variable (the dependent variable) from another's variables (the independent variables).
+This class will calculate the related correlation or degree of relationship between the variables,
+in which will try to determine how well a linear equation, describes or explains the relationship between them
+Model: `Y = Beta0 + Beta1 X + E`
+Estimator: `y = b0 + b1 x`
+Y: variable to explain
+X: explains variable, known value (constant)
+Beta0: intercept
+Beta1: slope
+E: disturbance of the environment, error, noise
+
+```ruby
+  options = { x_values: x_values, y_values: y_values }
+  x_values = [3.0402, 2.9819, 3.0934, 3.805, 5.423]
+  y_values = [8.014, 7.891, 8.207, 8.31, 8.45]
+
+  calculator = StatisticCalcs::RegressionTheory::SimpleLinealRegression.new(options)
+  calculator.calc!
+  calculator.to_h
+  # {
+  #   b1: 0.18134495612017704, # slope
+  #   b0: 7.509099759481907, # intercept
+  #   n: 5,
+  #   degrees_of_freedom: 3,
+  #   r: 0.8372299658466078, # pearson_correlation_coefficient
+  #   r_square: 0.7009540157115121,
+  #   valid_correlation_for_social_problems: true # > 0.6
+  #   valid_correlation_for_economic_problems: true # > 0.7
+  #   valid_correlation_for_tech_problems: false # > 0.8
+  #   covariance: 0.15573262000000554
+  #   variance: 1.07346
+  #   standard_deviation: 1.0360770675968076
+  #   equation: y = 7.509 + 0.181 x
+  # }
+```
 
 ## Development
 
