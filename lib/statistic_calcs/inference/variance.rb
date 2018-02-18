@@ -16,7 +16,7 @@ module StatisticCalcs
       include StatisticCalcs::Helpers::AliasAttributes
 
       attr_accessor :population_variance_lower_limit, :population_variance_upper_limit, :limits_relationship_variance,
-                    :sample_variance, :sample_size, :sample_error, :alpha,
+                    :sample_variance, :sample_size, :sample_error,
                     :degrees_of_freedom, :garcia_a
 
       attr_alias :lower_limit, :population_variance_lower_limit

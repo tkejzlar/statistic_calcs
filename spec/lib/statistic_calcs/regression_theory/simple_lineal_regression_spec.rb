@@ -20,9 +20,15 @@ RSpec.describe StatisticCalcs::RegressionTheory::SimpleLinealRegression do
         expect(subject.n).to eq(5)
         expect(subject.degrees_of_freedom).to eq(3)
 
+        expect(subject.b1_standard_deviation).to eq(0.06838629521911997)
+        expect(subject.model_standard_deviation).to eq(0.14170694442887077)
+        expect(subject.model_variance).to eq(0.02008085809936707)
+
         expect(subject.x_values_mean).to eq(3.66870)
         expect(subject.x_values_square_sum).to eq(71.59062121)
         expect(subject.x_values_sum).to eq(18.3435)
+        expect(subject.x_values_variance).to eq(1.07346)
+        expect(subject.x_values_standard_deviation).to eq(1.0360770675968076)
 
         expect(subject.xy_values_sum).to eq(150.7257695)
 
@@ -34,13 +40,33 @@ RSpec.describe StatisticCalcs::RegressionTheory::SimpleLinealRegression do
         expect(subject.r_square).to eq(0.7009540157115121)
         expect(subject.r_square_adj).to eq(0.7009540157115121)
         expect(subject.covariance).to eq(0.15573262000000554)
-        expect(subject.variance).to eq(1.07346)
-        expect(subject.standard_deviation).to eq(1.0360770675968076)
+
+        expect(subject.ro_lower_limit).to eq(-0.17232618950437983)
+        expect(subject.ro_upper_limit).to eq(0.9889779447869926)
+        expect(subject.ro_square_lower_limit).to eq(0.02969631558909943)
+        expect(subject.ro_square_upper_limit).to eq(0.9780773752751039)
 
         expect(subject.valid_correlation_for_social_problems?).to be_truthy
         expect(subject.valid_correlation_for_economic_problems?).to be_truthy
         expect(subject.valid_correlation_for_tech_problems?).to be_falsey
         expect(subject.equation).to eq('y = 7.509 + 0.181 x')
+        expect(subject.ro_boundaries).to eq('P(-0.172 < ro < 0.989) = 95.0%')
+        expect(subject.ro_square_boundaries).to eq('P(0.03 < ro < 0.978) = 95.0%')
+      end
+    end
+
+    describe 'calc to the population lower and upper limits' do
+      let(:options) { { x_values: x_values, y_values: y_values } }
+      let(:x_values) { [3.0402, 2.9819, 3.0934, 3.805, 5.423] }
+      let(:y_values) { [8.014, 7.891, 8.207, 8.31, 8.45] }
+
+      it 'should fill all the attributes' do
+        result = subject.y0_estimation(5.401)
+
+        expect(result[:y0]).to eq(8.488543867486984)
+        expect(result[:lower_limit]).to eq(8.060977652566306)
+        expect(result[:upper_limit]).to eq(8.916110082407661)
+        expect(result[:y0_boundaries]).to eq('P(8.061 < y0 < 8.916) = 95.0%')
       end
     end
   end
