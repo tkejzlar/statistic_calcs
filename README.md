@@ -135,7 +135,7 @@ Or install it yourself as:
   options = { mean: 0, standard_deviation: 1, g_x: 0.07493 }
 ```
 
-#### Also some of the distibution has aliases for their values to make it easier to use
+#### Also some of the distribution has aliases for their values to make it easier to use
 
 Example:
 
@@ -191,10 +191,9 @@ To calculate the sample size.
   # @sample_size=25
 ```
 
-#### Important. If you know the total population size, adding will correct the values.
+#### Important. If you know the total population size, adding will correct the values
 
 `population_size: 900`
-
 
 #### Unknown population standard deviation
 
@@ -270,21 +269,21 @@ Sample p'= r /n and population is P(A < p < B) = 1 - alpha.
   # { :confidence_level=>0.9, :sample_probability_of_success=>0.1, :probability_of_success_lower_limit=>0.02782, :probability_of_success_upper_limit=>0.2386, :sample_error=>0.10539 }
 ```
 
-#### Testing hypotheses
+### Testing hypotheses
 
 TODO: to be impleted - priority 3
 
-#### Comparing population parameters
+### Comparing population parameters
 
 TODO: to be impleted - priority 4
 
-#### Data set tests
+### Data set tests
 
 TODO: to be impleted - priority 2
 
-#### Regression and correlation analysis
+### Regression and correlation analysis
 
-##### Simple lineal regression
+#### Simple lineal regression
 
 Estimation of a variable (the dependent variable) from another's variables (the independent variables).
 This class will calculate the related correlation or degree of relationship between the variables,
