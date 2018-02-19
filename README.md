@@ -310,16 +310,36 @@ E: disturbance of the environment, error, noise
   #   b0: 7.509099759481907, # intercept
   #   n: 5,
   #   degrees_of_freedom: 3,
-  #   r: 0.8372299658466078, # pearson_correlation_coefficient
-  #   r_square: 0.7009540157115121,
+  #   r: 0.8372299658466078, # correlation_coefficient_estimator
+  #   r_square: 0.7009540157115121, # determination_coefficient_estimator
+  #   r_square_adj: 0.7009540157115121, determination_coefficient_adjusted_estimator
+  #   covariance: 0.15573262000000554
+  #   x_values_variance: 1.07346
+  #   x_values_standard_deviation: 1.0360770675968076
+  #   equation: y = 7.509 + 0.181 x
+
+  #   ro_boundaries= 'P(-0.172 < ro < 0.989) = 95.0%'
+  #   ro_lower_limit= -0.17232618950437983
+  #   ro_upper_limit= 0.9889779447869926
+
+  #   ro_square_boundaries= 'P(0.03 < ro < 0.978) = 95.0%'
+  #   ro_square_lower_limit= 0.02969631558909943
+  #   ro_square_upper_limit= 0.9780773752751039
+
   #   valid_correlation_for_social_problems: true # > 0.6
   #   valid_correlation_for_economic_problems: true # > 0.7
   #   valid_correlation_for_tech_problems: false # > 0.8
-  #   covariance: 0.15573262000000554
-  #   variance: 1.07346
-  #   standard_deviation: 1.0360770675968076
-  #   equation: y = 7.509 + 0.181 x
+  #   b1_standard_deviation = 0.06838629521911997
+  #   model_standard_deviation = 0.14170694442887077
+  #   model_variance = 0.02008085809936707
   # }
+
+  # And get a value
+  result = subject.y0_estimation(5.401)
+  result[:y0] # 8.488543867486984
+  result[:lower_limit] # 8.060977652566306
+  result[:upper_limit] # 8.916110082407661
+  result[:y0_boundaries] # 'P(8.061 < y0 < 8.916) = 95.0%'
 ```
 
 ## Development
