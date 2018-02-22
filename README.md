@@ -91,8 +91,8 @@ Compare 2 parameters to determine if one os greater than other
 
 #### Regression and correlation analysis
 
-- Simple lineal
-- Multiple lineal
+- Simple linear
+- Multiple linear
 
 ## Installation
 
@@ -283,7 +283,7 @@ TODO: to be impleted - priority 2
 
 ### Regression and correlation analysis
 
-#### Simple lineal regression
+#### Simple linear regression
 
 Estimation of a variable (the dependent variable) from another's variables (the independent variables).
 This class will calculate the related correlation or degree of relationship between the variables,
@@ -301,7 +301,7 @@ E: disturbance of the environment, error, noise
   x_values = [3.0402, 2.9819, 3.0934, 3.805, 5.423]
   y_values = [8.014, 7.891, 8.207, 8.31, 8.45]
 
-  calculator = StatisticCalcs::RegressionTheory::SimpleLinealRegression.new(options)
+  calculator = StatisticCalcs::Regression::SimpleLinearRegression.new(options)
   calculator.calc!
   calculator.to_h
   # {

@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-# rspec ./spec/lib/statistic_calcs/regression_theory/simple_lineal_regression_spec.rb
-require 'statistic_calcs/regression_theory/simple_lineal_regression.rb'
+# rspec ./spec/lib/statistic_calcs/regression/simple_linear_regression_spec.rb
+require 'statistic_calcs/regression/simple_linear_regression.rb'
 
 # rubocop:disable BlockLength
-RSpec.describe StatisticCalcs::RegressionTheory::SimpleLinealRegression do
-  subject { StatisticCalcs::RegressionTheory::SimpleLinealRegression.new(options) }
+RSpec.describe StatisticCalcs::Regression::SimpleLinearRegression do
+  subject { StatisticCalcs::Regression::SimpleLinearRegression.new(options) }
 
   context 'Happy path' do
     before { subject.calc! }

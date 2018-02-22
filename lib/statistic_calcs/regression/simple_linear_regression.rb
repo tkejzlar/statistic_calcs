@@ -9,7 +9,7 @@ require 'statistic_calcs/inference/errorable.rb'
 require 'pry'
 
 module StatisticCalcs
-  module RegressionTheory
+  module Regression
     # Estimation of a variable (the dependent variable) from another's variables (the independent variables).
     # This class will calculate the related correlation or degree of relationship between the variables,
     # in which will try to determine how well a linear equation, describes or explains the relationship between them
@@ -20,7 +20,7 @@ module StatisticCalcs
     # Beta0: intercept
     # Beta1: slope
     # E: disturbance of the environment, error, noise
-    class SimpleLinealRegression
+    class SimpleLinearRegression
       include StatisticCalcs::Helpers::AliasAttributes
       include StatisticCalcs::Inference::Errorable
       include StatisticCalcs::Helpers::ArrayValidations
