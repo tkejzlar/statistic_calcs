@@ -76,7 +76,7 @@ module StatisticCalcs
         self.lower_critical_fractil = mean_to_test - normal_dist(1 - alpha / 2) * multiplier_factor
         self.upper_critical_fractil = mean_to_test + normal_dist(1 - alpha / 2) * multiplier_factor
         self.reject = sample_mean > lower_critical_fractil || sample_mean < lower_critical_fractil
-        self.reject_condition = "X > Xc1 or X < Xc2-> reject H0. #{sample_mean} > #{lower_critical_fractil} or #{sample_mean} < #{upper_critical_fractil} -> #{reject}"
+        self.reject_condition = "Xc1 < X < Xc2-> reject H0. `#{lower_critical_fractil.round(2)} < #{sample_mean} < #{upper_critical_fractil.round(2)}` -> #{reject}"
       end
 
       def multiplier_factor

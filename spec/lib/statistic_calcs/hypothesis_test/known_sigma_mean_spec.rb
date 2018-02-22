@@ -36,6 +36,18 @@ RSpec.describe StatisticCalcs::HypothesisTest::KnownSigmaMean do
         end
       end
 
+      describe 'Unilateral - left - case2 test' do
+        let(:options) { { alpha: 0.05, standard_deviation: 15.0, sample_size: 10, sample_mean: 230.0, mean_to_test: 250, case: StatisticCalcs::HypothesisTest::Cases::CASE_3 } }
+
+        it 'should fill all the attributes' do
+          expect(subject.null_hypothesis).to eq('mean = x0 (250)')
+          expect(subject.alternative_hypothesis).to eq('mean >< x1 ()')
+          expect(subject.lower_critical_fractil).to eq(240.70309341576458)
+          expect(subject.upper_critical_fractil).to eq(259.29690658423544)
+          expect(subject.reject).to eq(true)
+          expect(subject.reject_condition).to eq('Xc1 < X < Xc2-> reject H0. `240.7 < 230.0 < 259.3` -> true')
+        end
+      end
       # describe 'calc to the sample size with sample error' do
       #   let(:options) { { alpha: 0.1, standard_deviation: 15.0, sample_mean: 246.0, sample_error: 5 } }
 
