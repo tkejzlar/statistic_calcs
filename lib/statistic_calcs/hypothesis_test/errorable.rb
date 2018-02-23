@@ -12,10 +12,8 @@ module StatisticCalcs
       end
 
       def validate!
-        raise StandardError, 'alpha should be between 0 and 1' unless alpha.between?(0, 1)
-        raise StandardError, 'confidence_level should be between 0 and 1' unless confidence_level.between?(0, 1)
-        raise StandardError, 'beta should be between 0 and 1' unless beta.between?(0, 1)
-        raise StandardError, 'test_power should be between 0 and 1' unless test_power.between?(0, 1)
+        raise StandardError, 'alpha/confidence_level should be between 0 and 1' unless alpha.between?(0, 1)
+        raise StandardError, 'beta/test_power should be between 0 and 1' unless beta.between?(0, 1)
       end
 
       private

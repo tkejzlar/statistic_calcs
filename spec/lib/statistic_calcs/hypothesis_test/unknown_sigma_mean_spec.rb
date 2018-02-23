@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
-# rspec ./spec/lib/statistic_calcs/hypothesis_test/known_sigma_mean_spec.rb
-require 'statistic_calcs/hypothesis_test/known_sigma_mean.rb'
+# rspec ./spec/lib/statistic_calcs/hypothesis_test/unknown_sigma_mean_spec.rb
+require 'statistic_calcs/hypothesis_test/unknown_sigma_mean.rb'
 require 'statistic_calcs/hypothesis_test/cases.rb'
 require 'pry'
 
 # rubocop:disable BlockLength
-RSpec.describe StatisticCalcs::HypothesisTest::KnownSigmaMean do
+RSpec.describe StatisticCalcs::HypothesisTest::UnknownSigmaMean do
   context 'Known sigma mean' do
-    subject { StatisticCalcs::HypothesisTest::KnownSigmaMean.new(options) }
+    subject { StatisticCalcs::HypothesisTest::UnknownSigmaMean.new(options) }
 
     context 'Happy path' do
       before { subject.calc! }
@@ -18,9 +18,9 @@ RSpec.describe StatisticCalcs::HypothesisTest::KnownSigmaMean do
         it 'should fill all the attributes' do
           expect(subject.null_hypothesis).to eq('mean <= x0 (250)')
           expect(subject.alternative_hypothesis).to eq('mean > x1 ()')
-          expect(subject.critical_fractil).to eq(257.8022086139919)
+          expect(subject.critical_fractil).to eq(258.69520420244686)
           expect(subject.reject).to eq(false)
-          expect(subject.reject_condition).to eq('X > Xc -> reject H0. `230.0 > 257.8` -> false')
+          expect(subject.reject_condition).to eq('X > Xc -> reject H0. `230.0 > 258.7` -> false')
         end
       end
 
@@ -30,9 +30,9 @@ RSpec.describe StatisticCalcs::HypothesisTest::KnownSigmaMean do
         it 'should fill all the attributes' do
           expect(subject.null_hypothesis).to eq('mean >= x0 (250)')
           expect(subject.alternative_hypothesis).to eq('mean < x1 ()')
-          expect(subject.critical_fractil).to eq(242.19779138600805)
+          expect(subject.critical_fractil).to eq(241.3047957975531)
           expect(subject.reject).to eq(true)
-          expect(subject.reject_condition).to eq('X < Xc -> reject H0. `230.0 < 242.2` -> true')
+          expect(subject.reject_condition).to eq('X < Xc -> reject H0. `230.0 < 241.3` -> true')
         end
       end
 
@@ -42,10 +42,10 @@ RSpec.describe StatisticCalcs::HypothesisTest::KnownSigmaMean do
         it 'should fill all the attributes' do
           expect(subject.null_hypothesis).to eq('mean = x0 (250)')
           expect(subject.alternative_hypothesis).to eq('mean >< x1 ()')
-          expect(subject.lower_critical_fractil).to eq(240.70309341576458)
-          expect(subject.upper_critical_fractil).to eq(259.29690658423544)
+          expect(subject.lower_critical_fractil).to eq(239.26963295241023)
+          expect(subject.upper_critical_fractil).to eq(260.73036704758977)
           expect(subject.reject).to eq(true)
-          expect(subject.reject_condition).to eq('X > Xc1 or X < Xc2-> reject H0. `230.0 > 240.7 or 230.0 < 259.3` -> true')
+          expect(subject.reject_condition).to eq('X > Xc1 or X < Xc2-> reject H0. `230.0 > 239.27 or 230.0 < 260.73` -> true')
         end
       end
     end
