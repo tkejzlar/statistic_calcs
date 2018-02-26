@@ -271,15 +271,138 @@ Sample p'= r /n and population is P(A < p < B) = 1 - alpha.
 
 ### Testing hypotheses
 
-TODO: to be impleted - priority 3
+Define and test an Hypotheses on statistic variables.
+Define the null hypotheses as unquestionable, you try to prove that it is false.
+
+```md
+h0               = null hypothesis
+h1               = alternative hypothesis
+confidence_level = Prob(no reject true h0). Correct decision
+alpha            = Prob(reject true h0). Type 1 error. worst error
+test_power       = Prob(reject false h0). Type 2 less serious error
+beta             = Prob(no reject false h0). Correct decision
+```
+
+Use the different cases depending the problem
+
+```md
+CASE_1 = unilateral right
+CASE_2 = unilateral left
+CASE_3 = bilateral
+```
+
+#### Mean
+
+Test a sample mean, knowing or not the population standard deviation
+
+##### Known Sigma Mean
+
+Calculated using the Normal distribution
+
+```ruby
+  options = {
+    alpha: 0.05,
+    standard_deviation: 15.0,
+    sample_size: 10,
+    sample_mean: 230.0,
+    mean_to_test: 250,
+    case: StatisticCalcs::HypothesisTest::Cases::CASE_1
+  }
+  calculator = StatisticCalcs::HypothesisTest::KnownSigmaMean.new(options)
+  calculator.calc!
+  calculator.to_h
+  # {
+  #   null_hypothesis: "mean <= x0 (250)",
+  #   alternative_hypothesis: "mean > x1 ()",
+  #   critical_fractil: 257.8022086139919,
+  #   reject: false,
+  #   reject_condition: "X > Xc -> reject H0. `230.0 > 257.8` -> false"
+  # }
+```
+
+##### Unknown Sigma Mean
+
+Calculated using the TStudent distribution
+
+```ruby
+  options = {
+    alpha: 0.05,
+    standard_deviation: 15.0,
+    sample_size: 10,
+    sample_mean: 230.0,
+    mean_to_test: 250,
+    case: StatisticCalcs::HypothesisTest::Cases::CASE_1
+  }
+  calculator = StatisticCalcs::HypothesisTest::KnownSigmaMean.new(options)
+  calculator.calc!
+  calculator.to_h
+  # {
+  # null_hypothesis: "mean <= x0 (250)",
+  # alternative_hypothesis: "mean > x1 ()",
+  # critical_fractil: 258.69520420244686,
+  # reject: false,
+  # reject_condition: "X > Xc -> reject H0. `230.0 > 258.7` -> false"
+  # }
+```
+
+##### Variance
+
+```ruby
+  options = {
+    sample_size: 30,
+    alpha: 0.05,
+    sample_variance: 225,
+    variance_to_test: 400,
+    case: StatisticCalcs::HypothesisTest::Cases::CASE_1
+  }
+  calculator = StatisticCalcs::HypothesisTest::Variance.new(options)
+  calculator.calc!
+  calculator.to_h
+  # {
+  #   null_hypothesis: 'sigma^2 <= s0 (400)',
+  #   alternative_hypothesis: 'sigma^2 > s1 ()',
+  #   critical_fractil: 586.9926896551724,
+  #   reject: false,
+  #   reject_condition: 'S^2 > S^2c -> reject H0. `225 > 586.99` -> false',
+  # }
+```
+
+##### Standard Deviation
+
+```ruby
+  options = {
+    sample_size: 30,
+    alpha: 0.05,
+    sample_standard_deviation: 15,
+    standard_deviation_to_test: 20,
+    case: StatisticCalcs::HypothesisTest::Cases::CASE_1
+  }
+  calculator = StatisticCalcs::HypothesisTest::StandardDeviation.new(options)
+  calculator.calc!
+  calculator.to_h
+  # {
+  #   null_hypothesis: 'sigma <= s0 (20)',
+  #   alternative_hypothesis: 'sigma > s1 ()',
+  #   critical_fractil: 24.227932013590685,
+  #   reject: false,
+  #   reject_condition: 'S > Sc -> reject H0. `15 > 24.23` -> false'
+  # }
+```
 
 ### Comparing population parameters
 
-TODO: to be impleted - priority 4
+- variance
+- standard_deviation
+- mean
+TODO: to be impleted - priority 3
 
 ### Data set tests
 
-TODO: to be impleted - priority 2
+- Chi square contrast
+TODO: to be impleted - priority 4
+
+- Goodness and fit tests
+TODO: to be impleted - priority 1
 
 ### Regression and correlation analysis
 
@@ -340,6 +463,10 @@ E: disturbance of the environment, error, noise
   result[:upper_limit] # 8.916110082407661
   result[:y0_boundaries] # 'P(8.061 < y0 < 8.916) = 95.0%'
 ```
+
+#### Multiple linear regression
+
+TODO: to be impleted - priority 2
 
 ## Development
 
