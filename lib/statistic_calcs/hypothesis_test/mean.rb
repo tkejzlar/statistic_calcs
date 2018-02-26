@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require 'statistic_calcs/hypothesis_test/base.rb'
-require 'statistic_calcs/helpers/required_validations.rb'
+require 'statistic_calcs/hypothesis_test/base'
+require 'statistic_calcs/helpers/required_validations'
 
 module StatisticCalcs
   module HypothesisTest

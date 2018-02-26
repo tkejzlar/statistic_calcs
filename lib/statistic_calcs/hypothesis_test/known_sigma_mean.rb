@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require 'statistic_calcs/hypothesis_test/mean.rb'
-require 'statistic_calcs/descriptive/distributions/normal.rb'
+require 'statistic_calcs/hypothesis_test/mean'
+require 'statistic_calcs/distributions/normal'
 
 module StatisticCalcs
   module HypothesisTest
@@ -17,7 +17,7 @@ module StatisticCalcs
       private
 
       def distribution(f_x)
-        StatisticCalcs::Descriptive::Distributions::Normal.new(f_x: f_x).calc!.x
+        StatisticCalcs::Distributions::Normal.new(f_x: f_x).calc!.x
       end
     end
   end

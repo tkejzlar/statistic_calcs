@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require 'statistic_calcs/inference/mean.rb'
-require 'statistic_calcs/descriptive/distributions/normal.rb'
+require 'statistic_calcs/inference/mean'
+require 'statistic_calcs/distributions/normal'
 
 module StatisticCalcs
   module Inference
@@ -19,7 +19,7 @@ module StatisticCalcs
       end
 
       def normal_dist
-        StatisticCalcs::Descriptive::Distributions::Normal.new(f_x: 1.0 - alpha / 2)
+        StatisticCalcs::Distributions::Normal.new(f_x: 1.0 - alpha / 2)
       end
     end
   end

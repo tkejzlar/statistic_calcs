@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require 'statistic_calcs/inference/mean.rb'
-require 'statistic_calcs/descriptive/distributions/t_student.rb'
+require 'statistic_calcs/inference/mean'
+require 'statistic_calcs/distributions/t_student'
 
 module StatisticCalcs
   module Inference
@@ -35,7 +35,7 @@ module StatisticCalcs
       end
 
       def t_student_dist(degrees_of_freedom)
-        StatisticCalcs::Descriptive::Distributions::TStudent.new(f_x: 1.0 - alpha / 2, v: degrees_of_freedom)
+        StatisticCalcs::Distributions::TStudent.new(f_x: 1.0 - alpha / 2, v: degrees_of_freedom)
       end
     end
   end

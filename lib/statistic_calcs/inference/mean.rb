@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require 'statistic_calcs/helpers/alias_attributes.rb'
-require 'statistic_calcs/inference/errorable.rb'
+require 'statistic_calcs/helpers/alias_attributes'
+require 'statistic_calcs/inference/errorable'
 
 module StatisticCalcs
   module Inference

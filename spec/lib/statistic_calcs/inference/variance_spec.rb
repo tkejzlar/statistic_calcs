@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # rspec ./spec/lib/statistic_calcs/inference/variance_spec.rb
-require 'statistic_calcs/inference/variance.rb'
+require 'statistic_calcs/inference/variance'
 
 # rubocop:disable BlockLength
 RSpec.describe StatisticCalcs::Inference::Variance do

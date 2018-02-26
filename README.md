@@ -124,7 +124,7 @@ Or install it yourself as:
 ```ruby
   # calc to get f(x) & g(x), knowing x
   options = { mean: 0, standard_deviation: 1, x: 1.64489 }
-  dist = StatisticCalcs::Descriptive::Distributions::Normal.new(options)
+  dist = StatisticCalcs::Distributions::Normal.new(options)
   dist.calc!
   dist.to_h # {:mean=>0, :standard_deviation=>1, :x=>1.64489, :cumulative_less_than_x_probability=>0.95, :cumulative_greater_than_x_probability=>0.05, :variance=>1}
 
@@ -149,12 +149,10 @@ Example:
 ### For datasets
 
 ```ruby
-
   # Simple number array
-
   array = [-5, 1.2, 2.3, 3.4]
-  calc = StatisticCalcs::DataSet.new(x_values: array)
-  calc.analyze! # @kurtosis=-1.76886, @max=3.4, @mean=0.475, @median=1.75, @min=-5.0, @skew=-0.62433, @standard_deviation=3.758878378807522, @variance=14.12917
+  calc = StatisticCalcs::DataSets::DataSet.new(x_values: array)
+  calc.calc! # @kurtosis=-1.76886, @max=3.4, @mean=0.475, @median=1.75, @min=-5.0, @skew=-0.62433, @standard_deviation=3.758878378807522, @variance=14.12917
 
   # with lower-upper boundary values
   x_values = [1.2, 2.3, 3.4, 1]
@@ -166,7 +164,22 @@ Example:
           lower_class_boundary_values: lower_class_boundary_values,
           upper_class_boundary_values: upper_class_boundary_values
          )
-  calc.analyze!
+  calc.calc!
+```
+
+Also to generate the histogram
+
+```ruby
+  list = [738, 600, 920, 1000, 897, 999, 601, 602]
+  calc = StatisticCalcs::DataSets::DataSet.new(x_values: list)
+  calc.split_in(4) # or group_each(100)
+  calc.intervals # => 4
+  calc.range # => 100
+  calc.histogram_keys # => ['less_than_700.0', '700.0..800.0', '800.0..900.0', '900.0_or_more_than']
+  calc.adjusted_keys # => ['600..700.0', '700.0..800.0', '800.0..900.0', '900.0..1000']
+  calc.histogram_values # => [3, 1, 1, 3]
+  calc.grouped_values # => [[600, 601, 602], [738], [897], [920, 1000, 999]]
+  calc.grouped_values_hash # => {'less_than_700.0'=>[600, 601, 602], '700.0..800.0'=>[738], '800.0..900.0'=>[897], '900.0_or_more_than'=>[920, 1000, 999]}
 ```
 
 ### Mean inference
@@ -391,18 +404,89 @@ Calculated using the TStudent distribution
 
 ### Comparing population parameters
 
+TODO: to be impleted - priority 3
 - variance
 - standard_deviation
 - mean
-TODO: to be impleted - priority 3
 
-### Data set tests
+### Goodness and fit tests
 
-- Chi square contrast
-TODO: to be impleted - priority 4
+Let's say that we have a list of data, and we want to view if those values
+adjust to a statistic model. We need at least 60 values. We group in N
+categories (clusters)
 
-- Goodness and fit tests
-TODO: to be impleted - priority 1
+For instance to an uniform
+
+- Uniform
+- Normal
+- Log Normal
+- Gumbel Maximum
+- Gumbel Minimum
+- TODO: Binomial
+- TODO: Poisson
+- TODO: Pareto
+
+#### If I have the list of values
+
+```ruby
+  values = [
+    600, 1000, 985, 998, 692, 973, 631, 814, 739, 733, 838, 813, 731, 801, 913, 754, 778, 697, 646,
+    649, 759, 909, 671, 801, 995, 677, 719, 960, 713, 881, 900, 981, 608, 909, 998, 877, 785, 681,
+    897, 679, 965, 948, 684, 766, 989, 878, 807, 672, 741, 670, 752, 818, 766, 759, 866, 650, 941, 819, 756, 635
+  ]
+  options = { data_set: values, clusters_count: 4 }
+  calculator = StatisticCalcs::ChiSquareContrast::UniformGoodnessAndFit.new(options)
+  calculator.calc!
+  calculator.cluster_keys # ["less_than_700.0", "700.0..800.0", "800.0..900.0", "900.0_or_more_than"])
+  calculator.cluster_values # ["600..700.0", "700.0..800.0", "800.0..900.0", "900.0..1000"])
+  calculator.cluster_mid_points # [650.0, 750.0, 850.0, 950.0]
+  calculator.observed_frequencies # [16, 15, 13, 16]
+
+  # model probability
+  calculator.occurrence_probabilities # [0.25, 0.25, 0.25, 0.25]
+  # frequency if model apply
+  calculator.expected_frequencies # [15, 15, 15, 15]
+  calculator.critical_chi_square # 0.4
+
+  # So with this calculated information we can test if it match or not with the hypotheses test
+  test_calc = StatisticCalcs::HypothesisTest::GoodnessAndFit.new(data: calculator)
+  test_calc.calc!
+  test_calc.null_hypothesis # 'Xc^2 <= X^2(1 - alpha, V). 0.4 <= 30.14353'
+  test_calc.alternative_hypothesis # 'Xc^2 > X^2'
+  test_calc.critical_fractil # 0.4
+  test_calc.reject # true
+  test_calc.reject_condition # 'Xc^2 > X^2 -> reject H0. `0.4 > 30.14` -> true'
+  # model doesn't fit to uniform dist
+```
+
+#### If I have the list of ocurrencies
+
+```ruby
+  lower_class_boundary_values = [0, 15, 30, 45, 60, 75, 105]
+  upper_class_boundary_values = [15, 30, 45, 60, 75, 105, 200]
+  observed_frequencies = [8, 20, 25, 35, 25, 18, 0]
+  options = {
+    lower_class_boundary_values: lower_class_boundary_values,
+    upper_class_boundary_values: upper_class_boundary_values,
+    observed_frequencies: observed_frequencies
+  }
+  calculator = StatisticCalcs::ChiSquareContrast::GumbelMinimumGoodnessAndFit.new(options)
+  calculator.calc!
+  calculator.cluster_mid_points).to eq([7.5, 22.5, 37.5, 52.5, 67.5, 90.0, 152.5])
+  calculator.occurrence_probabilities).to eq([0.6133, 0.09030, 0.0855200, 0.07447999, 0.05830, 0.062759, 0.01534])
+  calculator.expected_frequencies).to eq([80.3423, 11.829300, 11.20312, 9.756879, 7.63730, 8.221559, 2.00954])
+  calculator.critical_chi_square).to eq(206.1952)
+
+  # So with this calculated information we can test if it match or not with the hypotheses test
+  test_calc = StatisticCalcs::HypothesisTest::GoodnessAndFit.new(data: calculator)
+  test_calc.calc!
+  test_calc.null_hypothesis # 'Xc^2 <= X^2(1 - alpha, V). 206.1952 <= 9.48773'
+  test_calc.alternative_hypothesis # 'Xc^2 > X^2'
+  test_calc.critical_fractil # 206.1952
+  test_calc.reject_condition # true
+  test_calc.reject # 'Xc^2 > X^2 -> reject H0. `206.2 > 9.49` -> true'
+  # model doesn't fit to uniform dist
+```
 
 ### Regression and correlation analysis
 

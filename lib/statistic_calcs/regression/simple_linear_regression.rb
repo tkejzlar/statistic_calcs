@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require 'statistic_calcs/helpers/alias_attributes.rb'
-require 'statistic_calcs/helpers/array_validations.rb'
-require 'statistic_calcs/descriptive/distributions/normal.rb'
-require 'statistic_calcs/descriptive/distributions/t_student.rb'
-require 'statistic_calcs/data_set.rb'
-require 'statistic_calcs/inference/errorable.rb'
+require 'statistic_calcs/helpers/alias_attributes'
+require 'statistic_calcs/helpers/array_validations'
+require 'statistic_calcs/distributions/normal'
+require 'statistic_calcs/distributions/t_student'
+require 'statistic_calcs/data_sets/data_set'
+require 'statistic_calcs/inference/errorable'
 require 'pry'
 
 module StatisticCalcs
@@ -163,11 +163,11 @@ module StatisticCalcs
       end
 
       def pre_calcs!
-        StatisticCalcs::DataSet.new(x_values: y_values).analyze!.tap do |result|
+        StatisticCalcs::DataSets::DataSet.new(x_values: y_values).calc!.tap do |result|
           self.y_values_mean = result.mean
           self.y_values_sum = result.sum
         end
-        StatisticCalcs::DataSet.new(x_values: x_values).analyze!.tap do |result|
+        StatisticCalcs::DataSets::DataSet.new(x_values: x_values).calc!.tap do |result|
           self.x_values_mean = result.mean
           self.x_values_sum = result.sum
           self.x_values_variance = result.variance
@@ -235,11 +235,11 @@ module StatisticCalcs
       end
 
       def normal_dist
-        StatisticCalcs::Descriptive::Distributions::Normal.new(f_x: 1.0 - alpha / 2)
+        StatisticCalcs::Distributions::Normal.new(f_x: 1.0 - alpha / 2)
       end
 
       def t_student_dist
-        StatisticCalcs::Descriptive::Distributions::TStudent.new(f_x: 1.0 - alpha / 2, degrees_of_freedom: degrees_of_freedom)
+        StatisticCalcs::Distributions::TStudent.new(f_x: 1.0 - alpha / 2, degrees_of_freedom: degrees_of_freedom)
       end
     end
   end

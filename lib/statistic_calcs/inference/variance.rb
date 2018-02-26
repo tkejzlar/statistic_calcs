@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require 'statistic_calcs/descriptive/distributions/chi_square.rb'
-require 'statistic_calcs/descriptive/distributions/normal.rb'
-require 'statistic_calcs/helpers/alias_attributes.rb'
-require 'statistic_calcs/helpers/garcia_equation.rb'
-require 'statistic_calcs/inference/errorable.rb'
+require 'statistic_calcs/distributions/chi_square'
+require 'statistic_calcs/distributions/normal'
+require 'statistic_calcs/helpers/alias_attributes'
+require 'statistic_calcs/helpers/garcia_equation'
+require 'statistic_calcs/inference/errorable'
 
 module StatisticCalcs
   module Inference
@@ -64,11 +64,11 @@ module StatisticCalcs
       end
 
       def normal_dist
-        StatisticCalcs::Descriptive::Distributions::Normal.new(f_x: 1.0 - alpha / 2)
+        StatisticCalcs::Distributions::Normal.new(f_x: 1.0 - alpha / 2)
       end
 
       def chi_square_dist(f_x)
-        StatisticCalcs::Descriptive::Distributions::ChiSquare.new(f_x: f_x, degrees_of_freedom: degrees_of_freedom)
+        StatisticCalcs::Distributions::ChiSquare.new(f_x: f_x, degrees_of_freedom: degrees_of_freedom)
       end
     end
   end

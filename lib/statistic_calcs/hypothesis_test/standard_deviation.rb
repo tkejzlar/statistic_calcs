@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require 'statistic_calcs/hypothesis_test/base.rb'
-require 'statistic_calcs/helpers/required_validations.rb'
-require 'statistic_calcs/descriptive/distributions/chi_square.rb'
+require 'statistic_calcs/hypothesis_test/base'
+require 'statistic_calcs/helpers/required_validations'
+require 'statistic_calcs/distributions/chi_square'
 
 module StatisticCalcs
   module HypothesisTest
@@ -50,7 +50,7 @@ module StatisticCalcs
       end
 
       def chi_square_dist(f_x)
-        StatisticCalcs::Descriptive::Distributions::ChiSquare.new(f_x: f_x, degrees_of_freedom: degrees_of_freedom).calc!.x
+        StatisticCalcs::Distributions::ChiSquare.new(f_x: f_x, degrees_of_freedom: degrees_of_freedom).calc!.x
       end
     end
   end
