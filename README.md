@@ -98,7 +98,7 @@ Compare 2 parameters to determine if one os greater than other
 
 **Note that the GSL libraries must already be installed before Ruby/GSL can be installed:**
 
-- Debian/Ubuntu: `sudo apt-get install libgsl0ldbl libgsl0-dev`
+- Debian/Ubuntu: `sudo apt-get install libgsl2 libgsl0-dev`
 - Fedora/SuSE: +gsl-devel+
 - Gentoo: +sci-libs/gsl+
 - OS X: `brew install gsl`
