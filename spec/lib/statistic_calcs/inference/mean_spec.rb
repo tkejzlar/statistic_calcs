@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 # rspec ./spec/lib/statistic_calcs/inference/mean_spec.rb
-require 'statistic_calcs/inference/known_sigma_mean.rb'
-require 'statistic_calcs/inference/unknown_sigma_mean.rb'
+require 'statistic_calcs/inference/known_sigma_mean'
+require 'statistic_calcs/inference/unknown_sigma_mean'
 
 # rubocop:disable BlockLength
 RSpec.describe StatisticCalcs::Inference::KnownSigmaMean do

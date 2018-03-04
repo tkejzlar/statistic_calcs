@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require 'statistic_calcs/hypothesis_test/mean.rb'
-require 'statistic_calcs/descriptive/distributions/t_student.rb'
+require 'statistic_calcs/hypothesis_test/mean'
+require 'statistic_calcs/distributions/t_student'
 
 module StatisticCalcs
   module HypothesisTest
@@ -17,7 +17,7 @@ module StatisticCalcs
       private
 
       def distribution(f_x)
-        StatisticCalcs::Descriptive::Distributions::TStudent.new(f_x: f_x, degrees_of_freedom: degrees_of_freedom).calc!.x
+        StatisticCalcs::Distributions::TStudent.new(f_x: f_x, degrees_of_freedom: degrees_of_freedom).calc!.x
       end
     end
   end

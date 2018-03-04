@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # rspec ./spec/lib/statistic_calcs/inference/standard_deviation_spec.rb
-require 'statistic_calcs/inference/standard_deviation.rb'
+require 'statistic_calcs/inference/standard_deviation'
 
 # rubocop:disable BlockLength
 RSpec.describe StatisticCalcs::Inference::StandardDeviation do

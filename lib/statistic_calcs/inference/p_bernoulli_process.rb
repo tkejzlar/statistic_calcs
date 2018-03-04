@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require 'statistic_calcs/descriptive/distributions/binomial.rb'
-require 'statistic_calcs/helpers/alias_attributes.rb'
-require 'statistic_calcs/inference/errorable.rb'
+require 'statistic_calcs/distributions/binomial'
+require 'statistic_calcs/helpers/alias_attributes'
+require 'statistic_calcs/inference/errorable'
 
 module StatisticCalcs
   module Inference
@@ -54,12 +54,12 @@ module StatisticCalcs
 
       # lower Gb( r/n, A) = alpha / 2
       def g_binomial_dist
-        StatisticCalcs::Descriptive::Distributions::Binomial.new(g_x: alpha / 2, r: r - 1, n: n)
+        StatisticCalcs::Distributions::Binomial.new(g_x: alpha / 2, r: r - 1, n: n)
       end
 
       # upper Fb( r/n, B) = alpha / 2
       def f_binomial_dist
-        StatisticCalcs::Descriptive::Distributions::Binomial.new(f_x: alpha / 2, r: r, n: n)
+        StatisticCalcs::Distributions::Binomial.new(f_x: alpha / 2, r: r, n: n)
       end
     end
   end

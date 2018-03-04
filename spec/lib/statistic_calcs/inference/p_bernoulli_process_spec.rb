@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # rspec ./spec/lib/statistic_calcs/inference/p_bernoulli_process.rb
-require 'statistic_calcs/inference/p_bernoulli_process.rb'
+require 'statistic_calcs/inference/p_bernoulli_process'
 
 # rubocop:disable BlockLength
 RSpec.describe StatisticCalcs::Inference::PBernoulliProcess do

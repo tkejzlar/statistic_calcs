@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
 # rspec ./spec/lib/statistic_calcs/hypothesis_test/variance_spec.rb
-require 'statistic_calcs/hypothesis_test/variance.rb'
-require 'statistic_calcs/hypothesis_test/cases.rb'
+require 'statistic_calcs/hypothesis_test/variance'
+require 'statistic_calcs/hypothesis_test/cases'
 require 'pry'
 
 # rubocop:disable BlockLength
 RSpec.describe StatisticCalcs::HypothesisTest::Variance do
-  context 'Known sigma mean' do
+  context 'Variance' do
     subject { StatisticCalcs::HypothesisTest::Variance.new(options) }
 
     context 'Happy path' do

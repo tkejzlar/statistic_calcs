@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # rspec ./spec/lib/statistic_calcs/regression/simple_linear_regression_spec.rb
-require 'statistic_calcs/regression/simple_linear_regression.rb'
+require 'statistic_calcs/regression/simple_linear_regression'
 
 # rubocop:disable BlockLength
 RSpec.describe StatisticCalcs::Regression::SimpleLinearRegression do
