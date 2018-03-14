@@ -1,12 +1,6 @@
 # frozen_string_literal: true
 
-require 'statistic_calcs/helpers/alias_attributes'
-require 'statistic_calcs/helpers/array_validations'
-require 'statistic_calcs/distributions/normal'
-require 'statistic_calcs/distributions/t_student'
-require 'statistic_calcs/data_sets/data_set'
-require 'statistic_calcs/inference/errorable'
-require 'pry'
+require 'statistic_calcs/regression/base'
 
 module StatisticCalcs
   module Regression
@@ -20,81 +14,14 @@ module StatisticCalcs
     # Beta0: intercept
     # Beta1: slope
     # E: disturbance of the environment, error, noise
-    class SimpleLinearRegression
-      include StatisticCalcs::Helpers::AliasAttributes
-      include StatisticCalcs::Inference::Errorable
-      include StatisticCalcs::Helpers::ArrayValidations
-
-      SOCIAL_MIN_R = 0.6
-      ECONOMIC_MIN_R = 0.7
-      TECH_MIN_R = 0.85
-
-      # parameters
-      attr_accessor :dependent_values, # y values
-                    :independent_values # x values
-
-      # math calcs
-      attr_accessor :slope, :intercept, # estimation b0 & b1
-                    :n, :degrees_of_freedom
-
-      # statistic estimators
-      attr_accessor :correlation_coefficient_lower_limit,
-                    :correlation_coefficient_upper_limit,
-                    :correlation_coefficient_estimator,
-                    :covariance,
-                    :determination_coefficient_lower_limit,
-                    :determination_coefficient_upper_limit,
-                    :determination_coefficient_estimator,
-                    :determination_coefficient_estimator_adjusted,
-                    :model_standard_deviation,
-                    :model_variance,
-                    :b1_standard_deviation
-
-      # calcs
+    class SimpleLinearRegression < Base
       attr_accessor :x_values_mean,
                     :x_values_square_sum,
                     :x_values_standard_deviation,
                     :x_values_sum,
                     :x_values_variance,
                     :xy_values_sum,
-                    :y_values_mean,
-                    :y_values_square_sum,
-                    :y_values_sum
-
-      attr_alias :b0, :intercept
-      attr_alias :b1, :slope
-      attr_alias :x_values, :independent_values
-      attr_alias :y_values, :dependent_values
-
-      attr_alias :ro_lower_limit, :correlation_coefficient_lower_limit
-      attr_alias :ro_upper_limit, :correlation_coefficient_upper_limit
-      attr_alias :r, :correlation_coefficient_estimator
-
-      attr_alias :ro_square_lower_limit, :determination_coefficient_lower_limit
-      attr_alias :ro_square_upper_limit, :determination_coefficient_upper_limit
-      attr_alias :r_square, :determination_coefficient_estimator
-      attr_alias :r_square_adj, :determination_coefficient_estimator_adjusted
-
-      attr_alias :standard_deviation, :model_standard_deviation
-      attr_alias :variance, :model_variance
-
-      def calc!
-        init!
-        validate!
-        calculate!
-      end
-
-      def valid_correlation_for_social_problems?
-        r.abs >= SOCIAL_MIN_R
-      end
-
-      def valid_correlation_for_economic_problems?
-        r.abs >= ECONOMIC_MIN_R
-      end
-
-      def valid_correlation_for_tech_problems?
-        r.abs >= TECH_MIN_R
-      end
+                    :b1_standard_deviation
 
       def equation
         # y = b0 + b1 x
@@ -132,7 +59,6 @@ module StatisticCalcs
 
       def init!
         super
-        self.n = y_values&.count || 0
         self.degrees_of_freedom = n - 2 # 2 parameters
         self.xy_values_sum = 0
         self.y_values_square_sum = 0
@@ -224,22 +150,6 @@ module StatisticCalcs
         self.ro_upper_limit = (Math.exp(2 * z_max) - 1) / (Math.exp(2 * z_max) + 1)
         self.ro_square_lower_limit = ro_lower_limit**2
         self.ro_square_upper_limit = ro_upper_limit**2
-      end
-
-      def z
-        normal_dist.calc!.x
-      end
-
-      def t
-        t_student_dist.calc!.x
-      end
-
-      def normal_dist
-        StatisticCalcs::Distributions::Normal.new(f_x: 1.0 - alpha / 2)
-      end
-
-      def t_student_dist
-        StatisticCalcs::Distributions::TStudent.new(f_x: 1.0 - alpha / 2, degrees_of_freedom: degrees_of_freedom)
       end
     end
   end

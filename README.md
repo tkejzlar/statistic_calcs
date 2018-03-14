@@ -404,7 +404,8 @@ Calculated using the TStudent distribution
 
 ### Comparing population parameters
 
-TODO: to be impleted - priority 3
+TODO: to be implemented - priority 3
+
 - variance
 - standard_deviation
 - mean
@@ -459,7 +460,7 @@ For instance to an uniform
   # model doesn't fit to uniform dist
 ```
 
-#### If I have the list of ocurrencies
+#### If I have the list of occurrences
 
 ```ruby
   lower_class_boundary_values = [0, 15, 30, 45, 60, 75, 105]
@@ -488,8 +489,6 @@ For instance to an uniform
   # model doesn't fit to uniform dist
 ```
 
-### Regression and correlation analysis
-
 #### Simple linear regression
 
 Estimation of a variable (the dependent variable) from another's variables (the independent variables).
@@ -504,9 +503,9 @@ Beta1: slope
 E: disturbance of the environment, error, noise
 
 ```ruby
-  options = { x_values: x_values, y_values: y_values }
   x_values = [3.0402, 2.9819, 3.0934, 3.805, 5.423]
   y_values = [8.014, 7.891, 8.207, 8.31, 8.45]
+  options = { x_values: x_values, y_values: y_values }
 
   calculator = StatisticCalcs::Regression::SimpleLinearRegression.new(options)
   calculator.calc!
@@ -550,7 +549,63 @@ E: disturbance of the environment, error, noise
 
 #### Multiple linear regression
 
-TODO: to be impleted - priority 2
+The most important thing that this gem make =)
+
+Similar to simple linear regression, but can be used multiple variables to review if the independent variables affect (or not) to the dependant
+Model: `Y = Beta0 + Beta1 X1 + Beta2 X2 + ... + BetaN XN +E`
+Estimator: `y = b0 + b1 x1 + b2 x2 + .. + bn xn`
+Y: variable to explain
+X: explains variables, known values (constant) Is a `N` x `Variables count` Matrix
+
+First multicollinearity analysis.
+Usually is easy to add more variables to explain the dependent one, but if we add too much variables, and doesn´t add a significant amount,
+probably is better to exclude from the list.
+This analysis is too complex, and depends of many factors.
+Let´s jump into code first
+
+```ruby
+  x1_values  [1, 2.5, 3.1, 4, 4.7, 5.3, 6, 7.1, 9] }
+  x2_values  [9, 12, 13, 14, 14.5, 16, 17, 19, 19.6] }
+  x3_values  [3, 4, 5, 2, 4, 8, 12, 10, 23.2] }
+  x_values  [x1_values, x2_values, x3_values] }
+
+  y_values  [5, 8.5, 10, 11.2, 14, 16, 16.8, 18.55, 20] }
+  options  { x_values: x_values, y_values: y_values } }
+
+  calc =  StatisticCalcs::Regression::MultipleLinearRegression.new(options)
+  # all the possible combinations
+  calc.possible_scenarios # [['x1'], ['x2'], ['x3'], ['x1' 'x2'], ['x1' 'x3'], ['x2' 'x3'], ['x1' 'x2' 'x3']]
+  calc.possible_scenarios_keys # ['x1' 'x2' 'x3' 'x1x2' 'x1x3' 'x2x3' 'x1x2x3']
+
+  analysis = calc.multicollinearity_analysis
+  # to check which one is better you should compare the following statistics
+  analysis[0] # {:name=>"x1",     delta_sum=>10.680, :prediction_sum_square=> 21.281, :r_square=>0.955, :s_square=> 1.258, :det=>1,     :p=>2, :c_p=> 5.231})
+  analysis[1] # {:name=>"x2",     delta_sum=> 7.275, :prediction_sum_square=>  7.025, :r_square=>0.975, :s_square=> 0.699, :det=>1,     :p=>2, :c_p=> 0.686})
+  analysis[2] # {:name=>"x3",     delta_sum=>35.603, :prediction_sum_square=>205.417, :r_square=>0.606, :s_square=>11.224, :det=>1,     :p=>2, :c_p=>86.251})
+  analysis[3] # {:name=>"x1x2",   delta_sum=>11.134, :prediction_sum_square=> 27.189, :r_square=>0.976, :s_square=> 0.766, :det=>0.034, :p=>3, :c_p=> 2.341})
+  analysis[5] # {:name=>"x2x3",   delta_sum=> 8.929, :prediction_sum_square=>  9.995, :r_square=>0.975, :s_square=> 0.815, :det=>0.382, :p=>3, :c_p=> 2.682})
+  analysis[4] # {:name=>"x1x3",   delta_sum=>10.376, :prediction_sum_square=> 28.581, :r_square=>0.970, :s_square=> 0.988, :det=>0.261, :p=>3, :c_p=> 3.891})
+  analysis[6] # {:name=>"x1x2x3", delta_sum=>14.146, :prediction_sum_square=> 45.171, :r_square=>0.978, :s_square=> 0.861, :det=>0.005, :p=>4, :c_p=> 4})
+
+  # So first
+  # 1 - Parsimony Principle: The principle that the most acceptable explanation of an occurrence, phenomenon, or event is the simplest
+  # 2 - R² (which one is more related) the greatest possible. (to replace by adjusted)
+  # 3 - S² (which dispersion have each one) the lowest possible
+  # 4 - PRESS. Prediction square sum the lowest possible
+  # 5 - DET of correlation matrix should be at least 0.1 and closed to 1 is better
+  # 6 - Mallow´s cp: CP divided parameter count of each model (CP / p) should be less than 5.
+
+  # selecting one is subjective, for the example:
+  # first I remove `x3` because the r² is too slow. (the others are similar)
+  # second I remove `x1` & `x1x3` because the s² is to high
+  # third I remove the `x1x2` & `x1x2x3` because the PRESS is too high
+  # lastly I choose `x2` only because has similar values and less variables to analyse
+
+  # Also you can view
+  calc.correlation_matrix # Matrix[[1.0, 0.9776, 0.9876, 0.778], [0.977, 1.0, 0.982, 0.859], [0.987, 0.982, 1.0, 0.785], [0.778, 0.859, 0.785, 1.0]]
+  calc.r_square_matrix # Matrix[[1.0, 0.9558, 0.9754, 0.606], [0.955, 1.0, 0.965, 0.738], [0.975, 0.965, 1.0, 0.617], [0.606, 0.738, 0.617, 1.0]]
+  calc.adj_r_square_matrix # Matrix[[1.0, 0.9411, 0.9673, 0.475], [0.941, 1.0, 0.954, 0.651], [0.967, 0.954, 1.0, 0.489], [0.475, 0.651, 0.489, 1.0]]
+```
 
 ## Development
 
@@ -568,4 +623,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the StatisticCalcs project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/mberrueta/statistic_calcs/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the StatisticCalcs project’s codebase, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/mberrueta/statistic_calcs/blob/master/CODE_OF_CONDUCT.md).
