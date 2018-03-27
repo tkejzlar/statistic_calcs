@@ -61,7 +61,7 @@ Inferential statistical analysis infers properties about a unknowns population.
 - Mean Unknown Sigma `P(A < mu < B) = 1 - alpha`
 - Variance `P(A < sigma^2 < B) = 1 - alpha`
 - Standard deviation `P(A < sigma < B) = 1 - alpha`
-- P Bernulli process `P(A < p < B) = 1 - alpha`
+- P Bernoulli process `P(A < p < B) = 1 - alpha`
 
 #### Testing hypotheses
 
@@ -71,7 +71,7 @@ Test `Type 1`, `Type 2` or `Type 3` hypotheses over
 - Mean Unknown Sigma
 - Variance
 - Standard deviation
-- P Bernulli process
+- P Bernoulli process
 
 #### Comparing population parameters
 
@@ -491,7 +491,7 @@ For instance to an uniform
 
 #### Simple linear regression
 
-Estimation of a variable (the dependent variable) from another's variables (the independent variables).
+Estimation of a variable (the dependent variable) from another variables (the independent variables).
 This class will calculate the related correlation or degree of relationship between the variables,
 in which will try to determine how well a linear equation, describes or explains the relationship between them
 Model: `Y = Beta0 + Beta1 X + E`
@@ -557,7 +557,8 @@ Estimator: `y = b0 + b1 x1 + b2 x2 + .. + bn xn`
 Y: variable to explain
 X: explains variables, known values (constant) Is a `N` x `Variables count` Matrix
 
-First multicollinearity analysis.
+##### multicollinearity analysis
+
 Usually is easy to add more variables to explain the dependent one, but if we add too much variables, and doesn´t add a significant amount,
 probably is better to exclude from the list.
 This analysis is too complex, and depends of many factors.
@@ -606,6 +607,87 @@ Let´s jump into code first
   calc.r_square_matrix # Matrix[[1.0, 0.9558, 0.9754, 0.606], [0.955, 1.0, 0.965, 0.738], [0.975, 0.965, 1.0, 0.617], [0.606, 0.738, 0.617, 1.0]]
   calc.adj_r_square_matrix # Matrix[[1.0, 0.9411, 0.9673, 0.475], [0.941, 1.0, 0.954, 0.651], [0.967, 0.954, 1.0, 0.489], [0.475, 0.651, 0.489, 1.0]]
 ```
+
+Let's say a simple example with the following sample data 
+
+```ruby
+
+  x1_values  [1, 2, 3, 4, 5] }
+  x2_values  [1, 3, 7, 9, 3] }
+  x_values  [x1_values, x2_values] }
+  y_values  [8, 9, 7, 5, 4] }
+  options  { x_values: x_values, y_values: y_values } }
+  calc =  StatisticCalcs::Regression::MultipleLinearRegression.new(options)
+```
+
+##### Analysis of variance (ANOVA)
+
+```ruby
+  # excel result
+  # Groups  Count Sum Mean   Variance
+  # Column 1  5   33  6.6    4.3
+  # Column 2  5   15  3      2.5
+  # Column 3      23  4.6   10.8
+
+  calc.n # 5
+  calc.x_values_mean_matrix.to_a # [3.0, 4.6]
+  calc.y_values_mean # 6.6
+  calc.x_values_sum_matrix.to_a # [15.0, 23.0]
+  calc.y_values_sum # 33.0
+  calc.x_values_variance_matrix.to_a # [2.5, 10.8]
+  calc.y_values_variance # 4.3
+```
+
+##### Linear estimation
+
+```ruby
+  # excel result: liniest formula `=LINIEST(A2:A6,B2:C6,1, 1)`
+  # 0.0361445783  -1.2361445783   10.1421686747 --> Slopes and intercept
+  # 0.203753428    0.4234935474   1.273744148 ----> Standard errors/deviations
+  # 0.8397310171   1.1740158657   #N/A -----------> R^2 coefficients, Stand error Y
+  # 5.2395104895   2   #N/A  ---------------------> F observed, degrees of freedom
+  # 14.443373494   2.756626506  #N/A -------------> Sum squares, Residual sum squares
+
+  calc.b_values[:b2] #  0.03614 # slope b2
+  calc.b_values[:b1] # -1.23614 # slope b1
+  calc.b_values[:b0] # 10.14216 # intercept b0
+
+  calc.b_values_standard_errors[:b2] # 0.20375
+  calc.b_values_standard_errors[:b1] # 0.42349
+  calc.b_values_standard_errors[:b0] # 1.27374
+
+  calc.r_square         # 0.83973
+  calc.y_standard_error # 1.17401
+
+  calc.f_observed # 5.23951
+  calc.degrees_of_freedom # 2
+
+  calc.sum_squares          # 14.44337
+  calc.residual_sum_squares #  2.75662
+
+  calc.total_sum_squares # 17.2
+  calc.r # 0.91636
+```
+
+##### Covariance, Correlation, Sum squares matrixes
+
+```ruby
+  calc.covariance_matrix.to_a # [[3.44, -2.4, -2.16], [-2.4, 2.0, 2.0], [-2.16, 2.0, 8.64]]
+  calc.correlation_matrix.to_a # [[1.0, -0.91499, -0.39620], [-0.91499, 1.0, 0.48112], [-0.39620, 0.48112, 1.0]]
+  calc.r_square_matrix.to_a # [[1.0, 0.83720, 0.15697], [0.83720, 1.0, 0.23148], [0.15697, 0.23148, 1.0]]
+  calc.x_values_standard_deviation_matrix.to_a # [1.58113, 3.28633]
+  calc.r # 0.91636
+```
+
+##### Result
+
+```ruby
+  calc.valid_correlation_for_social_problems? # true
+  calc.valid_correlation_for_economic_problems? # true
+  calc.valid_correlation_for_tech_problems? # true
+  calc.equation # 'y = 10.142 - 1.2361 x1 + 0.0361 x2'
+```
+
 
 ## Development
 
