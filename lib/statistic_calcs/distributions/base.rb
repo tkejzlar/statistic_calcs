@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'statistic_calcs/helpers/alias_attributes'
-require 'gsl'
+# require 'gsl'
 require 'pry'
 
 module StatisticCalcs
