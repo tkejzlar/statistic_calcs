@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'descriptive-statistics'
+require 'descriptive_statistics'
 require 'statistic_calcs/data_sets/histogram_grouper'
 
 module StatisticCalcs
