@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'gsl'
+require 'descriptive-statistics'
 require 'statistic_calcs/data_sets/histogram_grouper'
 
 module StatisticCalcs
@@ -13,7 +13,7 @@ module StatisticCalcs
       include HistogramGrouper
 
       attr_accessor :mean, :variance, :standard_deviation,
-                    :max, :min, :skew, :kurtosis, :median, :mode,
+                    :max, :min, :median, :mode,
                     :sum, :n, :x_values
 
       def initialize(options = {})
@@ -25,7 +25,7 @@ module StatisticCalcs
 
       def calc!
         return self unless x_values.any? || already_calc?
-        set_gsl_values
+        set_stat_values
         self.n = x_values.count
         self.sum = mean * n
         self
@@ -33,19 +33,18 @@ module StatisticCalcs
 
       private
 
-      def set_gsl_values
-        self.mean = gsl.mean.round(StatisticCalcs::DECIMALS)
-        self.variance = gsl.variance.round(StatisticCalcs::DECIMALS)
-        self.standard_deviation = gsl.sd
-        self.max = gsl.max.round(StatisticCalcs::DECIMALS)
-        self.min = gsl.min.round(StatisticCalcs::DECIMALS)
-        self.skew = gsl.skew.round(StatisticCalcs::DECIMALS)
-        self.kurtosis = gsl.kurtosis.round(StatisticCalcs::DECIMALS)
-        self.median = gsl.median.round(StatisticCalcs::DECIMALS)
+      def set_stat_values
+        self.mean = stats.mean.round(StatisticCalcs::DECIMALS)
+        self.variance = stats.variance.round(StatisticCalcs::DECIMALS)
+        self.standard_deviation = stats.standard_deviation
+        self.max = stats.max.round(StatisticCalcs::DECIMALS)
+        self.min = stats.min.round(StatisticCalcs::DECIMALS)
+        self.median = stats.median.round(StatisticCalcs::DECIMALS)
+        self.mode = stats.mode.round(StatisticCalcs::DECIMALS)
       end
 
-      def gsl
-        GSL::Vector[x_values]
+      def stats
+        DescriptiveStatistics::Stats.new(x_values)
       end
 
       def already_calc?
