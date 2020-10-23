@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'statistic_calcs/helpers/alias_attributes'
-# require 'gsl'
+require 'distribution'
 require 'pry'
 
 module StatisticCalcs
@@ -32,13 +32,13 @@ module StatisticCalcs
 
       # The probability density function end with the suffix _pdf
       def gsl_ran
-        GSL::Ran
+        # GSL::Ran
       end
 
       # The cumulative functions P(x) and Q(x) ends with the suffix _P and _Q respectively.
       # The inverse cumulative functions P^{-1}(x) and Q^{-1}(x) ends with the suffix _Pinv and _Qinv respectively.
       def gsl_cdf
-        GSL::Cdf
+        # GSL::Cdf
       end
 
       def type
